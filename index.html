@@ -1,119 +1,176 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>al-Thurayya Gazetteer - Heatmap</title>
-    <link rel="stylesheet" href="heatmap.css" />
-    <link rel="stylesheet" href="leaflet/leaflet.css" />
-    <!--[if lte IE 8]>
-      <link rel="stylesheet" href="leaflet/leaflet.ie.css" />
-    <![endif]-->
-    <script src="leaflet/leaflet.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script type="text/javascript" src="heatmap-js/heatmap.js"></script>
-    <script type="text/javascript" src="heatmap-js/heatmap-leaflet.js"></script>
-    <script type="text/javascript" src="../Cornu_All.json" charset="utf-8"></script>
-    <script type="text/javascript" src="Cornu01_Ia_Routes.json" charset="utf-8"></script>
-    <script type="text/javascript" charset="utf-8">
-      $(function() {
-        // AWMC base layer
-        var baseLayer = L.tileLayer('http://a.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png', {
-        attribution: 'Tiles &copy; <a href="http://mapbox.com/" target="_blank">MapBox</a> | ' +
-                     'Data &copy; <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors, CC-BY-SA | '+
-                     'Tiles and Data &copy; 2013 <a href="http://www.awmc.unc.edu" target="_blank">AWMC</a> ' +
-                     '<a href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US" target="_blank">CC-BY-NC 3.0</a>'
-        });
-        
-        // Default style for markers
-        var style = { color: '#118128', fillColor: '#1bcc3f', radius: 3, opacity: 1, fillOpacity: 1 };
-        
-        // Marker overlays
-        var placeLayer = L.layerGroup();
-        $.each(places.data, function(idx, place) {
-          var marker = L.circleMarker([place.lat, place.lon], style);
-          marker.on('click', function(e) {
-            marker.bindPopup('<strong>' + place.translitTitle + ' (' + place.arTitle + ')</strong><br>').openPopup();
-          });
-          placeLayer.addLayer(marker);
-        });
-        
-        
- 
-        // Create map
-        var map = new L.Map('map', {
-          center: new L.LatLng(30, 30),
-          zoom: 5,
-          layers: [baseLayer],
-          minZoom: 3,
-          maxZoom: 10
-        });
-
-        //------------------------------------------------------------
-        //  START -- Routes
-        //------------------------------------------------------------
-        var routeLayer = L.layerGroup();
-        var routeStyle = { stroke: true, color: '#FF0000', weight: 1.5, opacity: 1, smoothFactor: 1 };
-        $.each( routes.data, function( id, item ) {
-            var coords = [];
-            for ( var i=0; i<item.coordinates.length; i++ ) {
-                coords.push( L.latLng( item.coordinates[i][0], item.coordinates[i][1] ) );
-            }
-            var route = L.polyline( coords, routeStyle );
-            routeLayer.addLayer( route );
-        });
-        //map.addLayer( routeLayer );
-        //------------------------------------------------------------
-        //  END -- Routes
-        //------------------------------------------------------------
-        
-        // Add headmap layer
-        var heatmapLayer = L.TileLayer.heatMap({
-          radius: 8, // original value 12
-          opacity: 0.8,
-          gradient: {
-              0.45: "rgb(0,0,255)",
-              0.55: "rgb(0,255,255)",
-              0.65: "rgb(0,255,0)",
-              0.95: "yellow",
-              1.0: "rgb(255,0,0)"
-          }
-        });
-        heatmapLayer.addData(places.data);
-
-        // Adding map layers
-
-        map.addLayer( heatmapLayer );
-        //map.addLayer( routeLayer ); // adds the layer to be displayed by default
-	// if not added like this, the layer can be switched on/off in the panel
-        
-        var baseMaps = {
-          "AWMC": baseLayer,
-        };
-
-        var overlayMaps = {
-          "Heatmap": heatmapLayer,
-          "Places": placeLayer,
-          "Routes": routeLayer,
-        };
-        
-        L.control.layers(baseMaps, overlayMaps).addTo(map);
-        
-      });
-    </script>
-  </head>
-
-  <body>
-    <div id="map"></div>
-
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-37473376-2']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-  </body>
+	<head>
+		<title>al-Thurayya Gazetteer - Heatmap</title>
+		<link rel="stylesheet" href="heatmap.css" />
+		<link rel="stylesheet" href="leaflet/leaflet.css" />
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="leaflet/leaflet.ie.css" />
+		<![endif]-->
+		<style type="text/css">
+			#search-container {
+				z-index: 9999;
+				position: absolute;
+				top: 0;
+				left: 50px;
+				margin: 10px;
+			}
+			#search-container #search input {
+				padding: 5px;
+				width: 200px;
+			}
+			.arabic {
+				font-size: 18px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="map"></div>
+		<div id="search-container">
+			<form id="search">
+				<input type="text" autocomplete="off" placeholder="Place Filter"/>
+			</form>
+		</div>
+	</body>
+	
+	<script src="leaflet/leaflet.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript" src="heatmap-js/heatmap.js"></script>
+	<script type="text/javascript" src="heatmap-js/heatmap-leaflet.js"></script>
+	<script type="text/javascript" src="Cornu01_Ia_Routes.json" charset="utf-8"></script>
+	<script type="text/javascript" src="Cornu01_Ia_Toponyms.json" charset="utf-8"></script>
+	
+	<!-- Google Analytics -->
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-37473376-2']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+	
+	<!-- Custom -->
+	<script type="text/javascript" charset="utf-8">
+		//------------------------------------------------------------
+		//  Avoid namespace collisions
+		//------------------------------------------------------------
+		$j = jQuery;
+		var markers = [];
+		$j( function() {
+			//------------------------------------------------------------
+			//  Draw markers on a particular layer
+			//------------------------------------------------------------
+			function addMarker( _idx, _markers, _layer ) {
+				_layer.addLayer( _markers[_idx] );
+				return _markers[ _idx ]
+			}
+			//------------------------------------------------------------
+			// AWMC base layer
+			//------------------------------------------------------------
+			var baseLayer = L.tileLayer('http://a.tiles.mapbox.com/v3/isawnyu.map-knmctlkh/{z}/{x}/{y}.png', {
+			attribution: 	'Tiles &copy; <a href="http://mapbox.com/" target="_blank">MapBox</a> | ' +
+							'Data &copy; <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors, CC-BY-SA | '+
+							'Tiles and Data &copy; 2013 <a href="http://www.awmc.unc.edu" target="_blank">AWMC</a> ' +
+							'<a href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US" target="_blank">CC-BY-NC 3.0</a>'
+	        });
+			//------------------------------------------------------------
+			// Default style for markers
+			//------------------------------------------------------------
+			var style = { color: '#118128', fillColor: '#1bcc3f', radius: 4, opacity: 1, fillOpacity: 1 };
+			//------------------------------------------------------------
+			//  Marker overlays
+			//------------------------------------------------------------
+			var placeLayer = L.layerGroup();
+			var markersGroup = null;
+			$j.each( places.data, function( _idx, _place ) {
+				markers[ _idx ] = L.circleMarker( [ _place.lat, _place.lon ], style );
+				markers[ _idx ].on( 'click', function( _e ) {
+					markers[ _idx ].bindPopup('<strong>' + _place.translitTitle + ' ( <span class="arabic">' + _place.arTitle + '</span> )</strong><br>').openPopup();
+				});
+				addMarker( _idx, markers, placeLayer );
+			});
+			//------------------------------------------------------------
+			// Create map
+			//------------------------------------------------------------
+			var map = new L.Map('map', {
+	            center: new L.LatLng( 30, 30 ),
+				zoom: 5,
+				layers: [baseLayer],
+				minZoom: 3,
+				maxZoom: 11
+			});
+			//------------------------------------------------------------
+			//  START -- Routes
+			//------------------------------------------------------------
+			var routeLayer = L.layerGroup();
+			var routeStyle = { stroke: true, color: '#FF0000', weight: 1.5, opacity: 1, smoothFactor: 1 };
+			$j.each( routes.data, function( id, item ) {
+				var coords = [];
+				for ( var i=0; i<item.coordinates.length; i++ ) {
+				    coords.push( L.latLng( item.coordinates[i][0], item.coordinates[i][1] ) );
+				}
+				var route = L.polyline( coords, routeStyle );
+				routeLayer.addLayer( route );
+			});
+			//------------------------------------------------------------
+			// Add headmap layer
+			//------------------------------------------------------------
+			var heatmapLayer = L.TileLayer.heatMap({
+				radius: 12,
+				opacity: 0.8,
+				gradient: {
+					0.45: "rgb(0,0,255)",
+					0.55: "rgb(0,255,255)",
+					0.65: "rgb(0,255,0)",
+					0.95: "yellow",
+					1.0: "rgb(255,0,0)"
+				}
+			});
+			heatmapLayer.addData( places.data );
+			map.addLayer( heatmapLayer );
+			//------------------------------------------------------------
+			//  Search
+			//------------------------------------------------------------
+			$j( '#search input' ).on( 'keyup', function() {
+				var matches = filterPlaces( $j( this ).val(), places.data, ['translitTitle','translitSimpleTitle','arTitle'] );
+				placeLayer.clearLayers();
+				for ( var i=0, ii=matches.length; i<ii; i++ ) {
+					addMarker( matches[i], markers, placeLayer );
+					markers[ matches[i] ].openPopup();
+				}
+			});
+			//------------------------------------------------------------
+			//  Map selector
+			//------------------------------------------------------------
+			var baseMaps = {
+				"AWMC": baseLayer,
+			};
+			var overlayMaps = {
+				"Heatmap": heatmapLayer,
+				"Places": placeLayer,
+				"Routes": routeLayer
+			};
+			L.control.layers( baseMaps, overlayMaps ).addTo( map );
+		});
+		//------------------------------------------------------------
+		//  Not the fastest text search... > 10,000 you might get some slowdown
+		//------------------------------------------------------------
+		function filterPlaces( _needle, _obj, _keys ) {
+			var matches = [];
+			var needle = _needle.toUpperCase();
+			for ( var i=0, ii=_obj.length; i<ii; i++ ) {
+				for ( var j=0, jj=_keys.length; j<jj; j++ ) {
+					var stack = _obj[i][_keys[j]].toUpperCase();
+					if ( stack.indexOf( needle ) != -1 ) {
+						matches.push( i );
+					}
+				}
+			}
+			return matches;
+		}
+	</script>
 </html>
