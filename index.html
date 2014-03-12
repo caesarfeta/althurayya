@@ -89,7 +89,7 @@
 			$j.each( places.data, function( _idx, _place ) {
 				markers[ _idx ] = L.circleMarker( [ _place.lat, _place.lon ], style );
 				markers[ _idx ].on( 'click', function( _e ) {
-					markers[ _idx ].bindPopup('<strong>' + _place.translitTitle + ' ( <span class="arabic">' + _place.arTitle + '</span> )</strong><br>').openPopup();
+					markers[ _idx ].bindPopup('<center><strong>' + _place.translitTitle + '</strong><br><span class="arabic">' + _place.arTitle + '</span></center>').openPopup();
 				});
 				addMarker( _idx, markers, placeLayer );
 			});
