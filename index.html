@@ -109,8 +109,8 @@
 			// Create map
 			//------------------------------------------------------------
 			var map = new L.Map('map', {
-	            center: new L.LatLng( 30, 30 ),
-				zoom: 5,
+	            center: new L.LatLng( 34, 34 ),
+				zoom: 6,
 				layers: [baseLayer],
 				minZoom: 3,
 				maxZoom: 11
@@ -162,9 +162,9 @@
 				"AWMC": baseLayer,
 			};
 			var overlayMaps = {
-				"Heatmap": heatmapLayer,
-				"Places": placeLayer,
-				"Routes": routeLayer
+				"Province du Šām: Heatmap": heatmapLayer,
+				"Province du Šām: Places": placeLayer,
+				"Province du Šām: Routes": routeLayer
 			};
 			L.control.layers( baseMaps, overlayMaps ).addTo( map );
 		});
