@@ -5,6 +5,8 @@
 		<link rel="stylesheet" href="heatmap.css" />
 		<link rel="stylesheet" href="leaflet/leaflet.css" />
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lateef:400,300' rel='stylesheet' type='text/css'>
+
 		<!--[if lte IE 8]>
 		  <link rel="stylesheet" href="leaflet/leaflet.ie.css" />
 		<![endif]-->
@@ -32,8 +34,13 @@
 				padding: 5px;
 				width: 200px;
 			}
+			.english{
+				font-size: 14px;
+				font-family: 'Roboto', Arial, sans-serif;
+			}
 			.arabic {
-				font-size: 18px;
+				font-size: 26px;
+				font-family: 'Lateef', serif;
 			}
 		</style>
 	</head>
@@ -101,7 +108,7 @@
 			$j.each( places.data, function( _idx, _place ) {
 				markers[ _idx ] = L.circleMarker( [ _place.lat, _place.lon ], style );
 				markers[ _idx ].on( 'click', function( _e ) {
-					markers[ _idx ].bindPopup('<center><strong>' + _place.translitTitle + '</strong><br><span class="arabic">' + _place.arTitle + '</span></center>').openPopup();
+					markers[ _idx ].bindPopup('<center><span class="english">' + _place.translitTitle + '</span><br><span class="arabic">' + _place.arTitle + '</span></center>').openPopup();
 				});
 				addMarker( _idx, markers, placeLayer );
 			});
