@@ -61,6 +61,7 @@
 	<script type="text/javascript" src="heatmap-js/heatmap-leaflet.js"></script>
 	<script type="text/javascript" src="Cornu01_Ia_Routes.json" charset="utf-8"></script>
 	<script type="text/javascript" src="Cornu01_Ia_Toponyms.json" charset="utf-8"></script>
+	<script type='text/javascript' src="palette.js"></script>
 	
 	<!-- Google Analytics -->
 	<script type="text/javascript">
@@ -97,20 +98,44 @@
 				     '<a href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US" target="_blank">CC-BY-NC 3.0</a>'
 	        });
 			//------------------------------------------------------------
-			// Default style for markers
+			//  Find all toponymtypes
 			//------------------------------------------------------------
-			var style = { color: '#118128', fillColor: '#1bcc3f', radius: 4, opacity: 1, fillOpacity: 1 };
+			var types = {};
+			$j.each( places.data, function( _idx, _place ) {
+				types[ _place.topType ] = ( types[ _place.topType ] == undefined ) ? 1 : types[ _place.topType ] + 1;
+			});
+			var radiusLookup = {
+				metropole: 6,
+				capital: 5,
+				city: 4,
+				village: 3,
+				waystation: 2
+			};
+			//------------------------------------------------------------
+			//  Build a layer for each type
+			//------------------------------------------------------------
+			var layers = {}
+			var p = palette();
+			var i = 0;
+			for ( var t in types ) {
+				var radius = ( radiusLookup[ t ] == undefined ) ? 1 : radiusLookup[ t ];
+				layers[t] = {};
+				layers[t]['layer'] = L.layerGroup();
+				layers[t]['style'] = { color: p[i] , fillColor: p[i], radius: radius, opacity: 1, fillOpacity: 1 };
+				i++;
+			}
 			//------------------------------------------------------------
 			//  Marker overlays
 			//------------------------------------------------------------
 			var placeLayer = L.layerGroup();
 			var markersGroup = null;
 			$j.each( places.data, function( _idx, _place ) {
-				markers[ _idx ] = L.circleMarker( [ _place.lat, _place.lon ], style );
+				var topType = _place.topType;
+				markers[ _idx ] = L.circleMarker( [ _place.lat, _place.lon ], layers[ topType ]['style'] );
 				markers[ _idx ].on( 'click', function( _e ) {
 					markers[ _idx ].bindPopup('<center><span class="english">' + _place.translitTitle + '</span><br><span class="arabic">' + _place.arTitle + '</span></center>').openPopup();
 				});
-				addMarker( _idx, markers, placeLayer );
+				addMarker( _idx, markers, layers[ topType ]['layer'] );
 			});
 			//------------------------------------------------------------
 			// Create map
@@ -173,6 +198,9 @@
 				"Province du Šām: Places": placeLayer,
 				"Province du Šām: Routes": routeLayer
 			};
+			for ( var l in layers ) {
+				overlayMaps[l] = layers[l]['layer'];
+			}
 			L.control.layers( baseMaps, overlayMaps ).addTo( map );
 		});
 		//------------------------------------------------------------
