@@ -9,7 +9,7 @@ var places = { data:[
     "translitTitle": "ʿĀqir",
     "UStranslitTitle": "ʿĀqir",
     "translitSimpleTitle": "Aqir",
-    "topType": "village",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -20,7 +20,7 @@ var places = { data:[
     "translitTitle": "ʿAḏnūn ?",
     "UStranslitTitle": "ʿAdhnūn ?",
     "translitSimpleTitle": "Adhnun ?",
-    "topType": "site",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -31,7 +31,7 @@ var places = { data:[
     "translitTitle": "ʿAkkaŧ",
     "UStranslitTitle": "ʿAkka",
     "translitSimpleTitle": "Akka",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -42,7 +42,7 @@ var places = { data:[
     "translitTitle": "ʿAmawās",
     "UStranslitTitle": "ʿAmawās",
     "translitSimpleTitle": "Amawas",
-    "topType": "bourgade",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -53,7 +53,7 @@ var places = { data:[
     "translitTitle": "ʿAmmān",
     "UStranslitTitle": "ʿAmmān",
     "translitSimpleTitle": "Amman",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -64,7 +64,7 @@ var places = { data:[
     "translitTitle": "ʿAmq",
     "UStranslitTitle": "ʿAmq",
     "translitSimpleTitle": "Amq",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -75,7 +75,7 @@ var places = { data:[
     "translitTitle": "ʿAqabaŧ al-Rummān ?",
     "UStranslitTitle": "ʿAqabat al-Rummān ?",
     "translitSimpleTitle": "Aqabat al-Rumman ?",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -86,7 +86,7 @@ var places = { data:[
     "translitTitle": "ʿArǧamūš",
     "UStranslitTitle": "ʿArjamūsh",
     "translitSimpleTitle": "Arjamush",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -97,7 +97,7 @@ var places = { data:[
     "translitTitle": "ʿArandal",
     "UStranslitTitle": "ʿArandal",
     "translitSimpleTitle": "Arandal",
-    "topType": "ville",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -108,7 +108,7 @@ var places = { data:[
     "translitTitle": "ʿArqaŧ",
     "UStranslitTitle": "ʿArqa",
     "translitSimpleTitle": "Arqa",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -119,7 +119,7 @@ var places = { data:[
     "translitTitle": "ʿAsqalān",
     "UStranslitTitle": "ʿAsqalān",
     "translitSimpleTitle": "Asqalan",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -130,7 +130,7 @@ var places = { data:[
     "translitTitle": "ʿAyn al-Ǧarr",
     "UStranslitTitle": "ʿAyn al-Jarr",
     "translitSimpleTitle": "Ayn al-Jarr",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -141,7 +141,7 @@ var places = { data:[
     "translitTitle": "Ġazzaŧ",
     "UStranslitTitle": "Ghazza",
     "translitSimpleTitle": "Ghazza",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -152,7 +152,7 @@ var places = { data:[
     "translitTitle": "Ḥabraŧ/al-Ḫalīl/Ḥabrūn/Masǧid Ibrāhīm",
     "UStranslitTitle": "Ḥabrat/al-Khalīl/Ḥabrūn/Masjid Ibrāhīm",
     "translitSimpleTitle": "Habra/al-Khalil/Habrun/Masjid Ibrahim",
-    "topType": "cite?",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -163,7 +163,7 @@ var places = { data:[
     "translitTitle": "Ḥalab",
     "UStranslitTitle": "Ḥalab",
     "translitSimpleTitle": "Halab",
-    "topType": "capitale",
+    "topType": "capitals",
     },
 {
     "source": "cornu1",
@@ -174,7 +174,7 @@ var places = { data:[
     "translitTitle": "Ḥamāŧ",
     "UStranslitTitle": "Ḥamā",
     "translitSimpleTitle": "Hama",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -196,7 +196,7 @@ var places = { data:[
     "translitTitle": "Ḥimṣ",
     "UStranslitTitle": "Ḥimṣ",
     "translitSimpleTitle": "Hims",
-    "topType": "capitale",
+    "topType": "capitals",
     },
 {
     "source": "cornu1",
@@ -207,7 +207,7 @@ var places = { data:[
     "translitTitle": "Ḥuwārīn #?",
     "UStranslitTitle": "Ḥuwārīn #?",
     "translitSimpleTitle": "Huwarin #?",
-    "topType": "lieu",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -218,7 +218,7 @@ var places = { data:[
     "translitTitle": "Ṣūr",
     "UStranslitTitle": "Ṣūr",
     "translitSimpleTitle": "Sur",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -229,7 +229,7 @@ var places = { data:[
     "translitTitle": "Ṣadad",
     "UStranslitTitle": "Ṣadad",
     "translitSimpleTitle": "Sadad",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -240,7 +240,7 @@ var places = { data:[
     "translitTitle": "Ṣarafandaŧ",
     "UStranslitTitle": "Ṣarafanda",
     "translitSimpleTitle": "Sarafanda",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -251,7 +251,7 @@ var places = { data:[
     "translitTitle": "Ṣawwarān",
     "UStranslitTitle": "Ṣawwarān",
     "translitSimpleTitle": "Sawwaran",
-    "topType": "district",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -262,7 +262,7 @@ var places = { data:[
     "translitTitle": "Ṣaydāʾ",
     "UStranslitTitle": "Ṣaydāʾ",
     "translitSimpleTitle": "Sayda",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -273,7 +273,7 @@ var places = { data:[
     "translitTitle": "Ṣuġar",
     "UStranslitTitle": "Ṣughar",
     "translitSimpleTitle": "Sughar",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -284,7 +284,7 @@ var places = { data:[
     "translitTitle": "Ṭabariyyaŧ",
     "UStranslitTitle": "Ṭabariyya",
     "translitSimpleTitle": "Tabariyya",
-    "topType": "capitale",
+    "topType": "capitals",
     },
 {
     "source": "cornu1",
@@ -295,7 +295,7 @@ var places = { data:[
     "translitTitle": "Ṭarsūs/Anṭarsūs/Anṭarṭūs",
     "UStranslitTitle": "Ṭarsūs/Anṭarsūs/Anṭarṭūs",
     "translitSimpleTitle": "Tarsus/Antarsus/Antartus",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -306,7 +306,7 @@ var places = { data:[
     "translitTitle": "Ǧūsiyaŧ",
     "UStranslitTitle": "Jūsiya",
     "translitSimpleTitle": "Jusiya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -317,7 +317,7 @@ var places = { data:[
     "translitTitle": "Ǧabal Ǧalīl",
     "UStranslitTitle": "Jabal Jalīl",
     "translitSimpleTitle": "Jabal Jalil",
-    "topType": "montagne",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -328,7 +328,7 @@ var places = { data:[
     "translitTitle": "Ǧabal al-Lukkām",
     "UStranslitTitle": "Jabal al-Lukkām",
     "translitSimpleTitle": "Jabal al-Lukkam",
-    "topType": "montagne",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -339,7 +339,7 @@ var places = { data:[
     "translitTitle": "Ǧabal al-Sumāq",
     "UStranslitTitle": "Jabal al-Sumāq",
     "translitSimpleTitle": "Jabal al-Sumaq",
-    "topType": "mont",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -361,7 +361,7 @@ var places = { data:[
     "translitTitle": "Ǧabal Lubnān",
     "UStranslitTitle": "Jabal Lubnān",
     "translitSimpleTitle": "Jabal Lubnan",
-    "topType": "mont",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -372,7 +372,7 @@ var places = { data:[
     "translitTitle": "Ǧabal Qalamūn/Qalamūn",
     "UStranslitTitle": "Jabal Qalamūn/Qalamūn",
     "translitSimpleTitle": "Jabal Qalamun/Qalamun",
-    "topType": "montagne",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -394,7 +394,7 @@ var places = { data:[
     "translitTitle": "Ǧabalaŧ",
     "UStranslitTitle": "Jabala",
     "translitSimpleTitle": "Jabala",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -405,7 +405,7 @@ var places = { data:[
     "translitTitle": "Ǧarūd",
     "UStranslitTitle": "Jarūd",
     "translitSimpleTitle": "Jarud",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -416,18 +416,7 @@ var places = { data:[
     "translitTitle": "Ǧarabuluṣ",
     "UStranslitTitle": "Jarabuluṣ",
     "translitSimpleTitle": "Jarabulus",
-    "topType": "cite",
-    },
-{
-    "source": "cornu1",
-    "lat": 36.56491,
-    "lon": 38.25590,
-    "value": 1,
-    "arTitle": "جسر منبج",
-    "translitTitle": "Ǧisr Manbiǧ",
-    "UStranslitTitle": "Jisr Manbij",
-    "translitSimpleTitle": "Jisr Manbij",
-    "topType": "ville-",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -438,7 +427,7 @@ var places = { data:[
     "translitTitle": "Ǧubayl",
     "UStranslitTitle": "Jubayl",
     "translitSimpleTitle": "Jubayl",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -449,7 +438,7 @@ var places = { data:[
     "translitTitle": "Ǧuniyyaŧ",
     "UStranslitTitle": "Juniyya",
     "translitSimpleTitle": "Juniyya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -460,7 +449,7 @@ var places = { data:[
     "translitTitle": "Šamsīn",
     "UStranslitTitle": "Shamsīn",
     "translitSimpleTitle": "Shamsin",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -471,7 +460,7 @@ var places = { data:[
     "translitTitle": "Šayzar",
     "UStranslitTitle": "Shayzar",
     "translitSimpleTitle": "Shayzar",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -482,7 +471,7 @@ var places = { data:[
     "translitTitle": "Ḫušāf",
     "UStranslitTitle": "Khushāf",
     "translitSimpleTitle": "Khushaf",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -493,7 +482,7 @@ var places = { data:[
     "translitTitle": "Aṭrābulus/Ṭarābulus",
     "UStranslitTitle": "Aṭrābulus/Ṭarābulus",
     "translitSimpleTitle": "Atrabulus/Tarabulus",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -504,7 +493,7 @@ var places = { data:[
     "translitTitle": "Aḏanaŧ",
     "UStranslitTitle": "Adhana",
     "translitSimpleTitle": "Adhana",
-    "topType": "placeforte",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -515,7 +504,7 @@ var places = { data:[
     "translitTitle": "Aḏrūḥ",
     "UStranslitTitle": "Adhrūḥ",
     "translitSimpleTitle": "Adhruh",
-    "topType": "capitale",
+    "topType": "capitals",
     },
 {
     "source": "cornu1",
@@ -526,18 +515,7 @@ var places = { data:[
     "translitTitle": "Aḏriʿāt",
     "UStranslitTitle": "Adhriʿāt",
     "translitSimpleTitle": "Adhriat",
-    "topType": "cheflieu",
-    },
-{
-    "source": "cornu1",
-    "lat": 31.12453,
-    "lon": 33.80807,
-    "value": 1,
-    "arTitle": "العريش",
-    "translitTitle": "al-ʿArīš",
-    "UStranslitTitle": "al-ʿArīsh",
-    "translitSimpleTitle": "al-Arish",
-    "topType": "cite-",
+    "topType": "capitals",
     },
 {
     "source": "cornu1",
@@ -548,7 +526,7 @@ var places = { data:[
     "translitTitle": "al-Ġūṭaŧ",
     "UStranslitTitle": "al-Ghūṭa",
     "translitSimpleTitle": "al-Ghuta",
-    "topType": "canton",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -559,7 +537,7 @@ var places = { data:[
     "translitTitle": "al-Ġawr",
     "UStranslitTitle": "al-Ghawr",
     "translitSimpleTitle": "al-Ghawr",
-    "topType": "fosse",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -570,7 +548,7 @@ var places = { data:[
     "translitTitle": "al-Ḥawrān",
     "UStranslitTitle": "al-Ḥawrān",
     "translitSimpleTitle": "al-Hawran",
-    "topType": "canton",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -581,7 +559,7 @@ var places = { data:[
     "translitTitle": "al-Ḥulaŧ",
     "UStranslitTitle": "al-Ḥula",
     "translitSimpleTitle": "al-Hula",
-    "topType": "canton",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -592,7 +570,7 @@ var places = { data:[
     "translitTitle": "al-Ǧawlān",
     "UStranslitTitle": "al-Jawlān",
     "translitSimpleTitle": "al-Jawlan",
-    "topType": "canton",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -614,7 +592,7 @@ var places = { data:[
     "translitTitle": "al-Ḫunāṣiraŧ",
     "UStranslitTitle": "al-Khunāṣira",
     "translitSimpleTitle": "al-Khunasira",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -625,7 +603,7 @@ var places = { data:[
     "translitTitle": "al-Aṭmīn/al-Laṭmīn",
     "UStranslitTitle": "al-Aṭmīn/al-Laṭmīn",
     "translitSimpleTitle": "al-Atmin/al-Latmin",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -636,7 +614,7 @@ var places = { data:[
     "translitTitle": "al-Aṯārib",
     "UStranslitTitle": "al-Athārib",
     "translitSimpleTitle": "al-Atharib",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -647,7 +625,7 @@ var places = { data:[
     "translitTitle": "al-Bāraŧ ?",
     "UStranslitTitle": "al-Bāra ?",
     "translitSimpleTitle": "al-Bara ?",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -658,7 +636,7 @@ var places = { data:[
     "translitTitle": "al-Baṯaniyyaŧ",
     "UStranslitTitle": "al-Bathaniyya",
     "translitSimpleTitle": "al-Bathaniyya",
-    "topType": "canton",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -669,7 +647,7 @@ var places = { data:[
     "translitTitle": "al-Balqāʾ",
     "UStranslitTitle": "al-Balqāʾ",
     "translitSimpleTitle": "al-Balqa",
-    "topType": "region",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -680,7 +658,7 @@ var places = { data:[
     "translitTitle": "al-Biqāʿ",
     "UStranslitTitle": "al-Biqāʿ",
     "translitSimpleTitle": "al-Biqa",
-    "topType": "canton",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -691,7 +669,7 @@ var places = { data:[
     "translitTitle": "al-Buṭlāmiyyaŧ/al-Ḫirbaŧ ?",
     "UStranslitTitle": "al-Buṭlāmiyyat/al-Khirba ?",
     "translitSimpleTitle": "al-Butlamiyya/al-Khirba ?",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -702,7 +680,7 @@ var places = { data:[
     "translitTitle": "al-Fīǧaŧ",
     "UStranslitTitle": "al-Fīja",
     "translitSimpleTitle": "al-Fija",
-    "topType": "source",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -713,7 +691,7 @@ var places = { data:[
     "translitTitle": "al-Ǧābiyaŧ",
     "UStranslitTitle": "al-Jābiya",
     "translitSimpleTitle": "al-Jabiya",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -724,7 +702,7 @@ var places = { data:[
     "translitTitle": "al-Ǧašš",
     "UStranslitTitle": "al-Jashsh",
     "translitSimpleTitle": "al-Jashsh",
-    "topType": "bourgade",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -735,7 +713,7 @@ var places = { data:[
     "translitTitle": "al-Ǧibāl",
     "UStranslitTitle": "al-Jibāl",
     "translitSimpleTitle": "al-Jibal",
-    "topType": "territoire",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -746,7 +724,7 @@ var places = { data:[
     "translitTitle": "al-Kanīsaŧ",
     "UStranslitTitle": "al-Kanīsa",
     "translitSimpleTitle": "al-Kanisa",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -757,7 +735,7 @@ var places = { data:[
     "translitTitle": "al-Kusayfaŧ",
     "UStranslitTitle": "al-Kusayfa",
     "translitSimpleTitle": "al-Kusayfa",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -768,7 +746,7 @@ var places = { data:[
     "translitTitle": "al-Kuswaŧ",
     "UStranslitTitle": "al-Kuswa",
     "translitSimpleTitle": "al-Kuswa",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -779,7 +757,7 @@ var places = { data:[
     "translitTitle": "al-Lāḏiqiyyaŧ",
     "UStranslitTitle": "al-Lādhiqiyya",
     "translitSimpleTitle": "al-Ladhiqiyya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -790,7 +768,7 @@ var places = { data:[
     "translitTitle": "al-Laǧǧūn",
     "UStranslitTitle": "al-Lajjūn",
     "translitSimpleTitle": "al-Lajjun",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -801,7 +779,7 @@ var places = { data:[
     "translitTitle": "al-Maqlūb",
     "UStranslitTitle": "al-Maqlūb",
     "translitSimpleTitle": "al-Maqlub",
-    "topType": "riviere",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -823,7 +801,7 @@ var places = { data:[
     "translitTitle": "al-Nāʿimaŧ",
     "UStranslitTitle": "al-Nāʿima",
     "translitSimpleTitle": "al-Naima",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -834,7 +812,7 @@ var places = { data:[
     "translitTitle": "al-Nabk",
     "UStranslitTitle": "al-Nabk",
     "translitSimpleTitle": "al-Nabk",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -845,7 +823,7 @@ var places = { data:[
     "translitTitle": "al-Qarʿūn",
     "UStranslitTitle": "al-Qarʿūn",
     "translitSimpleTitle": "al-Qarun",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -856,7 +834,7 @@ var places = { data:[
     "translitTitle": "al-Qaryatān",
     "UStranslitTitle": "al-Qaryatān",
     "translitSimpleTitle": "al-Qaryatan",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -867,7 +845,7 @@ var places = { data:[
     "translitTitle": "al-Qasṭal",
     "UStranslitTitle": "al-Qasṭal",
     "translitSimpleTitle": "al-Qastal",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -878,7 +856,7 @@ var places = { data:[
     "translitTitle": "al-Quṭayyifaŧ",
     "UStranslitTitle": "al-Quṭayyifa",
     "translitSimpleTitle": "al-Qutayyifa",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -889,7 +867,7 @@ var places = { data:[
     "translitTitle": "al-Ramlaŧ",
     "UStranslitTitle": "al-Ramla",
     "translitSimpleTitle": "al-Ramla",
-    "topType": "capitale",
+    "topType": "capitals",
     },
 {
     "source": "cornu1",
@@ -900,18 +878,7 @@ var places = { data:[
     "translitTitle": "al-Raqīm/al-Raqam",
     "UStranslitTitle": "al-Raqīm/al-Raqam",
     "translitSimpleTitle": "al-Raqim/al-Raqam",
-    "topType": "village",
-    },
-{
-    "source": "cornu1",
-    "lat": 35.94116,
-    "lon": 39.02803,
-    "value": 1,
-    "arTitle": "الرقة",
-    "translitTitle": "al-Raqqaŧ",
-    "UStranslitTitle": "al-Raqqa",
-    "translitSimpleTitle": "al-Raqqa",
-    "topType": "capitale-",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -922,7 +889,7 @@ var places = { data:[
     "translitTitle": "al-Ruṣāfaŧ",
     "UStranslitTitle": "al-Ruṣāfa",
     "translitSimpleTitle": "al-Rusafa",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -933,7 +900,7 @@ var places = { data:[
     "translitTitle": "al-Sukkariyyaŧ ?",
     "UStranslitTitle": "al-Sukkariyya ?",
     "translitSimpleTitle": "al-Sukkariyya ?",
-    "topType": "bourgade",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -944,7 +911,7 @@ var places = { data:[
     "translitTitle": "al-Suwaydiyyaŧ",
     "UStranslitTitle": "al-Suwaydiyya",
     "translitSimpleTitle": "al-Suwaydiyya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -955,7 +922,7 @@ var places = { data:[
     "translitTitle": "al-Zarqāʾ ?",
     "UStranslitTitle": "al-Zarqāʾ ?",
     "translitSimpleTitle": "al-Zarqa ?",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -966,7 +933,7 @@ var places = { data:[
     "translitTitle": "Anṭākiyyaŧ",
     "UStranslitTitle": "Anṭākiyya",
     "translitSimpleTitle": "Antakiyya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -977,7 +944,7 @@ var places = { data:[
     "translitTitle": "Anṭarṭūs/Anṭarsūs/Ṭarṭūs",
     "UStranslitTitle": "Anṭarṭūs/Anṭarsūs/Ṭarṭūs",
     "translitSimpleTitle": "Antartus/Antarsus/Tartus",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -988,7 +955,7 @@ var places = { data:[
     "translitTitle": "Anafaŧ",
     "UStranslitTitle": "Anafa",
     "translitSimpleTitle": "Anafa",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -999,7 +966,7 @@ var places = { data:[
     "translitTitle": "Arsūf",
     "UStranslitTitle": "Arsūf",
     "translitSimpleTitle": "Arsuf",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1010,7 +977,7 @@ var places = { data:[
     "translitTitle": "Aylaŧ/Waylaŧ",
     "UStranslitTitle": "Aylat/Wayla",
     "translitSimpleTitle": "Ayla/Wayla",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1021,7 +988,7 @@ var places = { data:[
     "translitTitle": "Azdūd/Yazdūd",
     "UStranslitTitle": "Azdūd/Yazdūd",
     "translitSimpleTitle": "Azdud/Yazdud",
-    "topType": "ribat",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -1032,7 +999,7 @@ var places = { data:[
     "translitTitle": "Bālis",
     "UStranslitTitle": "Bālis",
     "translitSimpleTitle": "Balis",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1043,7 +1010,7 @@ var places = { data:[
     "translitTitle": "Bāniyās",
     "UStranslitTitle": "Bāniyās",
     "translitSimpleTitle": "Baniyas",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1065,7 +1032,7 @@ var places = { data:[
     "translitTitle": "Baʿlabakk",
     "UStranslitTitle": "Baʿlabakk",
     "translitSimpleTitle": "Balabakk",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1076,7 +1043,7 @@ var places = { data:[
     "translitTitle": "Baġrās",
     "UStranslitTitle": "Baghrās",
     "translitSimpleTitle": "Baghras",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1087,7 +1054,7 @@ var places = { data:[
     "translitTitle": "Baṯrūn",
     "UStranslitTitle": "Bathrūn",
     "translitSimpleTitle": "Bathrun",
-    "topType": "port",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -1098,7 +1065,7 @@ var places = { data:[
     "translitTitle": "Bayrūt",
     "UStranslitTitle": "Bayrūt",
     "translitSimpleTitle": "Bayrut",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1109,7 +1076,7 @@ var places = { data:[
     "translitTitle": "Baysān",
     "UStranslitTitle": "Baysān",
     "translitSimpleTitle": "Baysan",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1120,7 +1087,7 @@ var places = { data:[
     "translitTitle": "Bayt al-Maqdis/al-Quds/Īliyā",
     "UStranslitTitle": "Bayt al-Maqdis/al-Quds/Īliyā",
     "translitSimpleTitle": "Bayt al-Maqdis/al-Quds/Iliya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1131,7 +1098,7 @@ var places = { data:[
     "translitTitle": "Bayt al-Rām/Bayt Rāmaŧ/Bayt al-Rās",
     "UStranslitTitle": "Bayt al-Rām/Bayt Rāmat/Bayt al-Rās",
     "translitSimpleTitle": "Bayt al-Ram/Bayt Rama/Bayt al-Ras",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1142,7 +1109,7 @@ var places = { data:[
     "translitTitle": "Bayt Ǧibrīl/Bayt Ǧibrīn",
     "UStranslitTitle": "Bayt Jibrīl/Bayt Jibrīn",
     "translitSimpleTitle": "Bayt Jibril/Bayt Jibrin",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1153,7 +1120,7 @@ var places = { data:[
     "translitTitle": "Bayt Laḥm",
     "UStranslitTitle": "Bayt Laḥm",
     "translitSimpleTitle": "Bayt Lahm",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1164,7 +1131,7 @@ var places = { data:[
     "translitTitle": "Bayyās",
     "UStranslitTitle": "Bayyās",
     "translitSimpleTitle": "Bayyas",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1175,7 +1142,7 @@ var places = { data:[
     "translitTitle": "Buḥayraŧ Ṭabariyyaŧ",
     "UStranslitTitle": "Buḥayrat Ṭabariyya",
     "translitSimpleTitle": "Buhayrat Tabariyya",
-    "topType": "lac",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1186,7 +1153,7 @@ var places = { data:[
     "translitTitle": "Buḥayraŧ al-Muntinaŧ/Buḥayraŧ al-Maqlūbaŧ/Buḥayraŧ al-Miyyataŧ/Buḥayraŧ al-Ṣuġar",
     "UStranslitTitle": "Buḥayrat al-Muntinat/Buḥayrat al-Maqlūbat/Buḥayrat al-Miyyatat/Buḥayrat al-Ṣughar",
     "translitSimpleTitle": "Buhayrat al-Muntina/Buhayrat al-Maqluba/Buhayrat al-Miyyata/Buhayrat al-Sughar",
-    "topType": "lac",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1197,7 +1164,7 @@ var places = { data:[
     "translitTitle": "Buḥayraŧ Qadas",
     "UStranslitTitle": "Buḥayrat Qadas",
     "translitSimpleTitle": "Buhayrat Qadas",
-    "topType": "lac",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1208,7 +1175,7 @@ var places = { data:[
     "translitTitle": "Buṣrá",
     "UStranslitTitle": "Buṣrā",
     "translitSimpleTitle": "Busra",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1219,7 +1186,7 @@ var places = { data:[
     "translitTitle": "Bulunyās ?",
     "UStranslitTitle": "Bulunyās ?",
     "translitSimpleTitle": "Bulunyas ?",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1230,7 +1197,7 @@ var places = { data:[
     "translitTitle": "Dārayyā",
     "UStranslitTitle": "Dārayyā",
     "translitSimpleTitle": "Darayya",
-    "topType": "bourgade",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1241,7 +1208,7 @@ var places = { data:[
     "translitTitle": "Dawsar",
     "UStranslitTitle": "Dawsar",
     "translitSimpleTitle": "Dawsar",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -1252,7 +1219,7 @@ var places = { data:[
     "translitTitle": "Dimašq",
     "UStranslitTitle": "Dimashq",
     "translitSimpleTitle": "Dimashq",
-    "topType": "metropole",
+    "topType": "metropoles",
     },
 {
     "source": "cornu1",
@@ -1263,7 +1230,7 @@ var places = { data:[
     "translitTitle": "Fāmiyyaŧ",
     "UStranslitTitle": "Fāmiyya",
     "translitSimpleTitle": "Famiyya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1274,7 +1241,7 @@ var places = { data:[
     "translitTitle": "Fāsiraŧ/Kāsiraŧ/Qāsiraŧ ?",
     "UStranslitTitle": "Fāsirat/Kāsirat/Qāsira ?",
     "translitSimpleTitle": "Fasira/Kasira/Qasira ?",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1285,7 +1252,7 @@ var places = { data:[
     "translitTitle": "ʿAqabaŧ al-Fīq/Afīq/Fīq",
     "UStranslitTitle": "ʿAqabat al-Fīq/Afīq/Fīq",
     "translitSimpleTitle": "Aqabat al-Fiq/Afiq/Fiq",
-    "topType": "passe",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -1307,7 +1274,7 @@ var places = { data:[
     "translitTitle": "Farʿāyā ?",
     "UStranslitTitle": "Farʿāyā ?",
     "translitSimpleTitle": "Faraya ?",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -1318,7 +1285,7 @@ var places = { data:[
     "translitTitle": "Iskandarūnaŧ/Iskandarīyaŧ",
     "UStranslitTitle": "Iskandarūnat/Iskandarīya",
     "translitSimpleTitle": "Iskandaruna/Iskandariya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1329,7 +1296,7 @@ var places = { data:[
     "translitTitle": "Ǧāsim",
     "UStranslitTitle": "Jāsim",
     "translitSimpleTitle": "Jasim",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -1340,7 +1307,7 @@ var places = { data:[
     "translitTitle": "Ǧubb Yūsuf",
     "UStranslitTitle": "Jubb Yūsuf",
     "translitSimpleTitle": "Jubb Yusuf",
-    "topType": "bourgade",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1351,7 +1318,7 @@ var places = { data:[
     "translitTitle": "Ǧuraš",
     "UStranslitTitle": "Jurash",
     "translitSimpleTitle": "Jurash",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1362,7 +1329,7 @@ var places = { data:[
     "translitTitle": "Kābul",
     "UStranslitTitle": "Kābul",
     "translitSimpleTitle": "Kabul",
-    "topType": "bourgade",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1373,7 +1340,7 @@ var places = { data:[
     "translitTitle": "Kafarṭāb",
     "UStranslitTitle": "Kafarṭāb",
     "translitSimpleTitle": "Kafartab",
-    "topType": "bourgade",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1384,7 +1351,7 @@ var places = { data:[
     "translitTitle": "Kafarsābā",
     "UStranslitTitle": "Kafarsābā",
     "translitSimpleTitle": "Kafarsaba",
-    "topType": "bourgade",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1395,7 +1362,7 @@ var places = { data:[
     "translitTitle": "Karak",
     "UStranslitTitle": "Karak",
     "translitSimpleTitle": "Karak",
-    "topType": "village?",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1406,7 +1373,7 @@ var places = { data:[
     "translitTitle": "Labwaŧ",
     "UStranslitTitle": "Labwa",
     "translitSimpleTitle": "Labwa",
-    "topType": "village?",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1417,7 +1384,7 @@ var places = { data:[
     "translitTitle": "Ludd",
     "UStranslitTitle": "Ludd",
     "translitSimpleTitle": "Ludd",
-    "topType": "bourgade",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1428,7 +1395,7 @@ var places = { data:[
     "translitTitle": "Māḥūz Azdūd",
     "UStranslitTitle": "Māḥūz Azdūd",
     "translitSimpleTitle": "Mahuz Azdud",
-    "topType": "port",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -1439,7 +1406,7 @@ var places = { data:[
     "translitTitle": "Māḥūz Yubnā",
     "UStranslitTitle": "Māḥūz Yubnā",
     "translitSimpleTitle": "Mahuz Yubna",
-    "topType": "port",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -1450,7 +1417,7 @@ var places = { data:[
     "translitTitle": "Mīmās",
     "UStranslitTitle": "Mīmās",
     "translitSimpleTitle": "Mimas",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1461,7 +1428,7 @@ var places = { data:[
     "translitTitle": "Maʾāb",
     "UStranslitTitle": "Maʾāb",
     "translitSimpleTitle": "Maab",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1472,7 +1439,7 @@ var places = { data:[
     "translitTitle": "Maʿān/Muʿān",
     "UStranslitTitle": "Maʿān/Muʿān",
     "translitSimpleTitle": "Maan/Muan",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1483,7 +1450,7 @@ var places = { data:[
     "translitTitle": "Maʿarraŧ al-Nuʿmān",
     "UStranslitTitle": "Maʿarrat al-Nuʿmān",
     "translitSimpleTitle": "Maarrat al-Numan",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1494,7 +1461,7 @@ var places = { data:[
     "translitTitle": "Maʿarraŧ Qinnasrīn",
     "UStranslitTitle": "Maʿarrat Qinnasrīn",
     "translitSimpleTitle": "Maarrat Qinnasrin",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1505,29 +1472,7 @@ var places = { data:[
     "translitTitle": "Maǧdal Salīm",
     "UStranslitTitle": "Majdal Salīm",
     "translitSimpleTitle": "Majdal Salim",
-    "topType": "localite",
-    },
-{
-    "source": "cornu1",
-    "lat": 36.52013,
-    "lon": 37.96771,
-    "value": 1,
-    "arTitle": "منبج",
-    "translitTitle": "Manbiǧ",
-    "UStranslitTitle": "Manbij",
-    "translitSimpleTitle": "Manbij",
-    "topType": "cite-",
-    },
-{
-    "source": "cornu1",
-    "lat": 36.96023,
-    "lon": 36.72114,
-    "value": 1,
-    "arTitle": "مرعش ?",
-    "translitTitle": "Marʿaš ?",
-    "UStranslitTitle": "Marʿash ?",
-    "translitSimpleTitle": "Marash ?",
-    "topType": "placefrontiere-",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1538,7 +1483,7 @@ var places = { data:[
     "translitTitle": "Marǧ al-Ṣuffar",
     "UStranslitTitle": "Marj al-Ṣuffar",
     "translitSimpleTitle": "Marj al-Suffar",
-    "topType": "lieu",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -1549,7 +1494,7 @@ var places = { data:[
     "translitTitle": "Marǧ Rāhiṭ",
     "UStranslitTitle": "Marj Rāhiṭ",
     "translitSimpleTitle": "Marj Rahit",
-    "topType": "lieu",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -1560,7 +1505,7 @@ var places = { data:[
     "translitTitle": "Marāqiyyaŧ",
     "UStranslitTitle": "Marāqiyya",
     "translitSimpleTitle": "Maraqiyya",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1571,7 +1516,7 @@ var places = { data:[
     "translitTitle": "Muʾtaŧ",
     "UStranslitTitle": "Muʾta",
     "translitSimpleTitle": "Muta",
-    "topType": "village",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1582,7 +1527,7 @@ var places = { data:[
     "translitTitle": "Nābulus",
     "UStranslitTitle": "Nābulus",
     "translitSimpleTitle": "Nabulus",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1593,7 +1538,7 @@ var places = { data:[
     "translitTitle": "Ǧayḥān",
     "UStranslitTitle": "Jayḥān",
     "translitSimpleTitle": "Jayhan",
-    "topType": "fleuve",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1604,7 +1549,7 @@ var places = { data:[
     "translitTitle": "al-Furāt",
     "UStranslitTitle": "al-Furāt",
     "translitSimpleTitle": "al-Furat",
-    "topType": "riviere",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1615,7 +1560,7 @@ var places = { data:[
     "translitTitle": "al-Urdunn",
     "UStranslitTitle": "al-Urdunn",
     "translitSimpleTitle": "al-Urdunn",
-    "topType": "riviere",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1626,7 +1571,7 @@ var places = { data:[
     "translitTitle": "al-Urunṭ/al-Urund",
     "UStranslitTitle": "al-Urunṭ/al-Urund",
     "translitSimpleTitle": "al-Urunt/al-Urund",
-    "topType": "riviere",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1637,7 +1582,7 @@ var places = { data:[
     "translitTitle": "Baradá",
     "UStranslitTitle": "Baradā",
     "translitSimpleTitle": "Barada",
-    "topType": "riviere",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1648,7 +1593,7 @@ var places = { data:[
     "translitTitle": "Quwayq",
     "UStranslitTitle": "Quwayq",
     "translitSimpleTitle": "Quwayq",
-    "topType": "riviere",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1659,7 +1604,7 @@ var places = { data:[
     "translitTitle": "Sayḥān",
     "UStranslitTitle": "Sayḥān",
     "translitSimpleTitle": "Sayhan",
-    "topType": "fleuve",
+    "topType": "waters",
     },
 {
     "source": "cornu1",
@@ -1670,7 +1615,7 @@ var places = { data:[
     "translitTitle": "Nawá",
     "UStranslitTitle": "Nawā",
     "translitSimpleTitle": "Nawa",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1681,7 +1626,7 @@ var places = { data:[
     "translitTitle": "Nihyā ?",
     "UStranslitTitle": "Nihyā ?",
     "translitSimpleTitle": "Nihya ?",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -1692,7 +1637,7 @@ var places = { data:[
     "translitTitle": "Qāraŧ",
     "UStranslitTitle": "Qāra",
     "translitSimpleTitle": "Qara",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -1703,7 +1648,7 @@ var places = { data:[
     "translitTitle": "Qūrus",
     "UStranslitTitle": "Qūrus",
     "translitSimpleTitle": "Qurus",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1714,7 +1659,7 @@ var places = { data:[
     "translitTitle": "Qadas",
     "UStranslitTitle": "Qadas",
     "translitSimpleTitle": "Qadas",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1725,7 +1670,7 @@ var places = { data:[
     "translitTitle": "Qalansuwaŧ",
     "UStranslitTitle": "Qalansuwa",
     "translitSimpleTitle": "Qalansuwa",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -1736,7 +1681,7 @@ var places = { data:[
     "translitTitle": "Qaryaŧ al-ʿUyūn",
     "UStranslitTitle": "Qaryat al-ʿUyūn",
     "translitSimpleTitle": "Qaryat al-Uyun",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -1747,7 +1692,7 @@ var places = { data:[
     "translitTitle": "Qaysariyyaŧ",
     "UStranslitTitle": "Qaysariyya",
     "translitSimpleTitle": "Qaysariyya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1758,7 +1703,7 @@ var places = { data:[
     "translitTitle": "Qinnasrīn",
     "UStranslitTitle": "Qinnasrīn",
     "translitSimpleTitle": "Qinnasrin",
-    "topType": "capitale",
+    "topType": "capitals",
     },
 {
     "source": "cornu1",
@@ -1769,7 +1714,7 @@ var places = { data:[
     "translitTitle": "Rafḥ",
     "UStranslitTitle": "Rafḥ",
     "translitSimpleTitle": "Rafh",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -1780,7 +1725,7 @@ var places = { data:[
     "translitTitle": "Rafaniyyaŧ",
     "UStranslitTitle": "Rafaniyya",
     "translitSimpleTitle": "Rafaniyya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1791,7 +1736,7 @@ var places = { data:[
     "translitTitle": "Rastān",
     "UStranslitTitle": "Rastān",
     "translitSimpleTitle": "Rastan",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -1802,7 +1747,7 @@ var places = { data:[
     "translitTitle": "Riḥā/Arīḥā",
     "UStranslitTitle": "Riḥā/Arīḥā",
     "translitSimpleTitle": "Riha/Ariha",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -2055,7 +2000,7 @@ var places = { data:[
     "translitTitle": "Sabasṭiyaŧ",
     "UStranslitTitle": "Sabasṭiya",
     "translitSimpleTitle": "Sabastiya",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -2066,7 +2011,7 @@ var places = { data:[
     "translitTitle": "Salamiyyaŧ",
     "UStranslitTitle": "Salamiyya",
     "translitSimpleTitle": "Salamiyya",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -2077,7 +2022,7 @@ var places = { data:[
     "translitTitle": "Sarmīn",
     "UStranslitTitle": "Sarmīn",
     "translitSimpleTitle": "Sarmin",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -2088,7 +2033,7 @@ var places = { data:[
     "translitTitle": "Suwaydāʾ",
     "UStranslitTitle": "Suwaydāʾ",
     "translitSimpleTitle": "Suwayda",
-    "topType": "localite",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -2099,7 +2044,7 @@ var places = { data:[
     "translitTitle": "Tīnāt/Ḥiṣn al-Tīnāt",
     "UStranslitTitle": "Tīnāt/Ḥiṣn al-Tīnāt",
     "translitSimpleTitle": "Tinat/Hisn al-Tinat",
-    "topType": "placeforte",
+    "topType": "sites",
     },
 {
     "source": "cornu1",
@@ -2110,7 +2055,7 @@ var places = { data:[
     "translitTitle": "Tīzīn/Tūzīn",
     "UStranslitTitle": "Tīzīn/Tūzīn",
     "translitSimpleTitle": "Tizin/Tuzin",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -2121,7 +2066,7 @@ var places = { data:[
     "translitTitle": "Taʿāsir",
     "UStranslitTitle": "Taʿāsir",
     "translitSimpleTitle": "Taasir",
-    "topType": "etape",
+    "topType": "waystations",
     },
 {
     "source": "cornu1",
@@ -2132,7 +2077,7 @@ var places = { data:[
     "translitTitle": "Tadmur",
     "UStranslitTitle": "Tadmur",
     "translitSimpleTitle": "Tadmur",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -2143,7 +2088,7 @@ var places = { data:[
     "translitTitle": "Tall Mannas",
     "UStranslitTitle": "Tall Mannas",
     "translitSimpleTitle": "Tall Mannas",
-    "topType": "district",
+    "topType": "regions",
     },
 {
     "source": "cornu1",
@@ -2154,7 +2099,7 @@ var places = { data:[
     "translitTitle": "Wādī Mūsá",
     "UStranslitTitle": "Wādī Mūsā",
     "translitSimpleTitle": "Wadi Musa",
-    "topType": "wadi?",
+    "topType": "wadi",
     },
 {
     "source": "cornu1",
@@ -2165,7 +2110,7 @@ var places = { data:[
     "translitTitle": "Yāfā",
     "UStranslitTitle": "Yāfā",
     "translitSimpleTitle": "Yafa",
-    "topType": "cite",
+    "topType": "towns",
     },
 {
     "source": "cornu1",
@@ -2176,7 +2121,7 @@ var places = { data:[
     "translitTitle": "Yubnā",
     "UStranslitTitle": "Yubnā",
     "translitSimpleTitle": "Yubna",
-    "topType": "village",
+    "topType": "villages",
     },
 {
     "source": "cornu1",
@@ -2187,7 +2132,7 @@ var places = { data:[
     "translitTitle": "Zabadānī",
     "UStranslitTitle": "Zabadānī",
     "translitSimpleTitle": "Zabadani",
-    "topType": "localite",
+    "topType": "villages",
     },
 
 ]}
