@@ -110,7 +110,7 @@
 			//------------------------------------------------------------
 			var layers = {}
 			for ( var t in types ) {
-				var color = ( conditionLookup[ t ] == undefined ) ? "grey" : conditionLookup[ t ];
+				var color = ( productLookup[ t ] == undefined ) ? "grey" : productLookup[ t ];
 				layers[t] = {};
 				layers[t]['layer'] = L.layerGroup();
 				layers[t]['style'] = { color: color, fillColor: color, radius: 3, opacity: 1, fillOpacity: 1 };
@@ -122,12 +122,17 @@
 			var markersGroup = null;
 			$j.each( places.data, function( _idx, _place ) {
 				var condition = _place.condition;
-				markers[ _idx ] = L.circleMarker( [ _place.lat, _place.lon ], layers[ condition ]['style'] );
-				markers[ _idx ].on( 'click', function( _e ) {
+				try {
+					markers[ _idx ] = L.circleMarker( [ _place.lat, _place.lon ], layers[ condition ]['style'] );
+					markers[ _idx ].on( 'click', function( _e ) {
 					//markers[ _idx ].bindPopup('<center><span class="english">' + _place.name + '</span></center>').openPopup();
 					markers[ _idx ].bindPopup('<center><span class="english">' + _place.name + '</span><br><span class="comment">' + _place.comment + '</span></center>').openPopup();
-				});
-				addMarker( _idx, markers, layers[ condition ]['layer'] );
+					});
+					addMarker( _idx, markers, layers[ condition ]['layer'] );
+				}
+				catch( err ) {
+					console.log( _place );
+				}
 			});
 			//------------------------------------------------------------
 			// Create map

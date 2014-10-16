@@ -1,1403 +1,3946 @@
+var sizeDot = 10
+
+var opacityVar = .75
+var opacityFillVar = .25
+
+var productLookup = {
+    lakes: 12,
+    streams: 8,
+    rivers: 8,
+    canals: 6,
+    cisterns: 4,
+    wells: 4,
+    rainwater: 4,
+    imported: 3,
+    none: 2,
+};
+
 var radiusLookup = {
-    metropoles: 6,
-    capitals: 5,
-    towns: 4,
-    villages: 3,
-    waystations: 2
-};
-
-var colorLookup = {
-    metropoles: "red",
-    capitals: "green",
-    towns: "blue",
-    villages: "yellow",
-    waystations: "black"
-};
-
-var conditionLookup = {
-    0: "grey",
-    1: "green",
-    2: "red",
-    3: "blue",
-    4: "yellow",
-    5: "black",
-    6: "green",
-    7: "red",
-    8: "blue",
-    9: "yellow",
-    10: "black",  
+    sweetest: "#000080",
+    good: "#0000FF",
+    fair: "#2E8B57",
+    neutral: "#7B68EE",
+    poor: "#DCDCDC",
+    worst: "#000000",
+    unknown: "#FFFFF0",
 };
 
 var places = { data:[
-{
-    "lat": 31.86252,
-    "lon": 34.80861,
-    "name": "Aqir",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.39418,
-    "lon": 35.26620,
-    "name": "Adhnun ?",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.92878,
-    "lon": 35.07559,
-    "name": "Akka",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.84394,
-    "lon": 34.97656,
-    "name": "Amawas",
-    "topType": "villages",
-    "condition": 2,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.93113,
-    "lon": 35.91903,
-    "name": "Amman",
-    "topType": "towns",
-    "condition": 2,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.38345,
-    "lon": 36.47102,
-    "name": "Amq",
-    "topType": "waystations",
-    "condition": 2,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.88074,
-    "lon": 36.18816,
-    "name": "Aqabat al-Rumman ?",
-    "topType": "waystations",
-    "condition": 2,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.86315,
-    "lon": 35.89165,
-    "name": "Arjamush",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 30.08115,
-    "lon": 35.19579,
-    "name": "Arandal",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.52991,
-    "lon": 36.07300,
-    "name": "Arqa",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.66572,
-    "lon": 34.55455,
-    "name": "Asqalan",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.72730,
-    "lon": 35.90422,
-    "name": "Ayn al-Jarr",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.49664,
-    "lon": 34.45664,
-    "name": "Ghazza",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.53018,
-    "lon": 35.08912,
-    "name": "Habra/al-Khalil/Habrun/Masjid Ibrahim",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.19828,
-    "lon": 37.17518,
-    "name": "Halab",
-    "topType": "capitals",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.12587,
-    "lon": 36.76872,
-    "name": "Hama",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.67547,
-    "lon": 36.27118,
-    "name": "Hisn Barzuya",
-    "topType": "fortresse",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.73793,
-    "lon": 36.72425,
-    "name": "Hims",
-    "topType": "capitals",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.26231,
-    "lon": 37.10415,
-    "name": "Huwarin #?",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.26921,
-    "lon": 35.20796,
-    "name": "Sur",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.31043,
-    "lon": 36.93340,
-    "name": "Sadad",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.45495,
-    "lon": 35.28606,
-    "name": "Sarafanda",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.28804,
-    "lon": 36.76600,
-    "name": "Sawwaran",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.56642,
-    "lon": 35.37475,
-    "name": "Sayda",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.03706,
-    "lon": 35.46845,
-    "name": "Sughar",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.77755,
-    "lon": 35.51241,
-    "name": "Tabariyya",
-    "topType": "capitals",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.90807,
-    "lon": 34.95529,
-    "name": "Tarsus/Antarsus/Antartus",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.44699,
-    "lon": 36.56409,
-    "name": "Jusiya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.85533,
-    "lon": 36.35891,
-    "name": "Jabal Jalil",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.33966,
-    "lon": 36.05096,
-    "name": "Jabal al-Lukkam",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.66884,
-    "lon": 36.58384,
-    "name": "Jabal al-Sumaq",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.20588,
-    "lon": 36.20321,
-    "name": "Jabal Bahra",
-    "topType": "montagne/region",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.15941,
-    "lon": 35.99225,
-    "name": "Jabal Lubnan",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.91260,
-    "lon": 36.59718,
-    "name": "Jabal Qalamun/Qalamun",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.45826,
-    "lon": 35.81024,
-    "name": "Jabal Sanir",
-    "topType": "montagne/region",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.36567,
-    "lon": 35.95309,
-    "name": "Jabala",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.81588,
-    "lon": 36.74014,
-    "name": "Jarud",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.81562,
-    "lon": 38.00577,
-    "name": "Jarabulus",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.12764,
-    "lon": 35.65206,
-    "name": "Jubayl",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.98398,
-    "lon": 35.61897,
-    "name": "Juniyya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.53863,
-    "lon": 36.74279,
-    "name": "Shamsin",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.25585,
-    "lon": 36.55938,
-    "name": "Shayzar",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.08630,
-    "lon": 37.69991,
-    "name": "Khushaf",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.44044,
-    "lon": 35.85194,
-    "name": "Atrabulus/Tarabulus",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.96023,
-    "lon": 35.34272,
-    "name": "Adhana",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 30.33962,
-    "lon": 35.75502,
-    "name": "Adhruh",
-    "topType": "capitals",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.61046,
-    "lon": 36.09087,
-    "name": "Adhriat",
-    "topType": "capitals",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.50849,
-    "lon": 36.44363,
-    "name": "al-Ghuta",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.86882,
-    "lon": 35.48149,
-    "name": "al-Ghawr",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.65059,
-    "lon": 36.73153,
-    "name": "al-Hawran",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.97543,
-    "lon": 35.63816,
-    "name": "al-Hula",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.09084,
-    "lon": 35.79833,
-    "name": "al-Jawlan",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 30.59382,
-    "lon": 35.77450,
-    "name": "al-Sharat",
-    "topType": "circon",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.78031,
-    "lon": 37.50551,
-    "name": "al-Khunasira",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.31245,
-    "lon": 36.62191,
-    "name": "al-Atmin/al-Latmin",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.13792,
-    "lon": 36.83533,
-    "name": "al-Atharib",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.68430,
-    "lon": 36.54442,
-    "name": "al-Bara ?",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.72189,
-    "lon": 36.15837,
-    "name": "al-Bathaniyya",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.08487,
-    "lon": 35.96379,
-    "name": "al-Balqa",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.83512,
-    "lon": 35.92143,
-    "name": "al-Biqa",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.52404,
-    "lon": 38.31435,
-    "name": "al-Butlamiyya/al-Khirba ?",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.64139,
-    "lon": 36.02468,
-    "name": "al-Fija",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.92323,
-    "lon": 36.04321,
-    "name": "al-Jabiya",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.03094,
-    "lon": 35.45020,
-    "name": "al-Jashsh",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 30.26155,
-    "lon": 35.32238,
-    "name": "al-Jibal",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.74750,
-    "lon": 34.95381,
-    "name": "al-Kanisa",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.20812,
-    "lon": 35.04078,
-    "name": "al-Kusayfa",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.35826,
-    "lon": 36.23184,
-    "name": "al-Kuswa",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.51961,
-    "lon": 35.80763,
-    "name": "al-Ladhiqiyya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.60823,
-    "lon": 35.27017,
-    "name": "al-Lajjun",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.42297,
-    "lon": 36.42642,
-    "name": "al-Maqlub",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.94067,
-    "lon": 35.66897,
-    "name": "al-Missisa",
-    "topType": "place-forte",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.77683,
-    "lon": 35.46741,
-    "name": "al-Naima",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.02567,
-    "lon": 36.73220,
-    "name": "al-Nabk",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.57083,
-    "lon": 35.71229,
-    "name": "al-Qarun",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.22510,
-    "lon": 37.24976,
-    "name": "al-Qaryatan",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.06025,
-    "lon": 37.57892,
-    "name": "al-Qastal",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.74546,
-    "lon": 36.60247,
-    "name": "al-Qutayyifa",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.92484,
-    "lon": 34.86436,
-    "name": "al-Ramla",
-    "topType": "capitals",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.89279,
-    "lon": 35.96419,
-    "name": "al-Raqim/al-Raqam",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.64344,
-    "lon": 38.78470,
-    "name": "al-Rusafa",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.56416,
-    "lon": 34.65335,
-    "name": "al-Sukkariyya ?",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.08960,
-    "lon": 35.99387,
-    "name": "al-Suwaydiyya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.07029,
-    "lon": 36.08689,
-    "name": "al-Zarqa ?",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.19718,
-    "lon": 36.18418,
-    "name": "Antakiyya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.89985,
-    "lon": 35.90356,
-    "name": "Antartus/Antarsus/Tartus",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.35634,
-    "lon": 35.73678,
-    "name": "Anafa",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.19588,
-    "lon": 34.80739,
-    "name": "Arsuf",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 29.54282,
-    "lon": 34.93982,
-    "name": "Ayla/Wayla",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.79837,
-    "lon": 34.66817,
-    "name": "Azdud/Yazdud",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.02806,
-    "lon": 38.09005,
-    "name": "Balis",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.25150,
-    "lon": 35.67787,
-    "name": "Baniyas",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.71618,
-    "lon": 36.32185,
-    "name": "Buqa",
-    "topType": "circon",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.01251,
-    "lon": 36.19213,
-    "name": "Balabakk",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.41518,
-    "lon": 36.22768,
-    "name": "Baghras",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.25903,
-    "lon": 35.67059,
-    "name": "Bathrun",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.90162,
-    "lon": 35.50910,
-    "name": "Bayrut",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.50000,
-    "lon": 35.49256,
-    "name": "Baysan",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.77768,
-    "lon": 35.20345,
-    "name": "Bayt al-Maqdis/al-Quds/Iliya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.80167,
-    "lon": 35.60287,
-    "name": "Bayt al-Ram/Bayt Rama/Bayt al-Ras",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.60564,
-    "lon": 34.88059,
-    "name": "Bayt Jibril/Bayt Jibrin",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.70926,
-    "lon": 35.18792,
-    "name": "Bayt Lahm",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.75139,
-    "lon": 36.23856,
-    "name": "Bayyas",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.80982,
-    "lon": 35.57727,
-    "name": "Buhayrat Tabariyya",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.38450,
-    "lon": 35.46173,
-    "name": "Buhayrat al-Muntina/Buhayrat al-Maqluba/Buhayrat al-Miyyata/Buhayrat al-Sughar",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.06755,
-    "lon": 35.59845,
-    "name": "Buhayrat Qadas",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.50000,
-    "lon": 36.47474,
-    "name": "Busra",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.18256,
-    "lon": 35.97212,
-    "name": "Bulunyas ?",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.46544,
-    "lon": 36.23184,
-    "name": "Darayya",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.92575,
-    "lon": 38.49243,
-    "name": "Dawsar",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.51843,
-    "lon": 36.30199,
-    "name": "Dimashq",
-    "topType": "metropoles",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.41665,
-    "lon": 36.40440,
-    "name": "Famiyya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.66663,
-    "lon": 35.80083,
-    "name": "Fasira/Kasira/Qasira ?",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.77421,
-    "lon": 35.67655,
-    "name": "Aqabat al-Fiq/Afiq/Fiq",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.43634,
-    "lon": 35.61434,
-    "name": "Fahl",
-    "topType": "circon",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.87271,
-    "lon": 36.93472,
-    "name": "Faraya ?",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.57473,
-    "lon": 36.19234,
-    "name": "Iskandaruna/Iskandariya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.98099,
-    "lon": 36.04321,
-    "name": "Jasim",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.92434,
-    "lon": 35.52565,
-    "name": "Jubb Yusuf",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.27309,
-    "lon": 35.88040,
-    "name": "Jurash",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.86543,
-    "lon": 35.21458,
-    "name": "Kabul",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.50744,
-    "lon": 36.61239,
-    "name": "Kafartab",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.17778,
-    "lon": 34.88134,
-    "name": "Kafarsaba",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.17824,
-    "lon": 35.69038,
-    "name": "Karak",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.19007,
-    "lon": 36.33244,
-    "name": "Labwa",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.95598,
-    "lon": 34.88482,
-    "name": "Ludd",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.81276,
-    "lon": 34.63712,
-    "name": "Mahuz Azdud",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.87811,
-    "lon": 34.66888,
-    "name": "Mahuz Yubna",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.50145,
-    "lon": 34.42276,
-    "name": "Mimas",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.25790,
-    "lon": 35.73272,
-    "name": "Maab",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 30.19664,
-    "lon": 35.72442,
-    "name": "Maan/Muan",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.64344,
-    "lon": 36.69124,
-    "name": "Maarrat al-Numan",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.01376,
-    "lon": 36.69667,
-    "name": "Maarrat Qinnasrin",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.22604,
-    "lon": 35.43299,
-    "name": "Majdal Salim",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.22659,
-    "lon": 36.14580,
-    "name": "Marj al-Suffar",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.60226,
-    "lon": 36.50981,
-    "name": "Marj Rahit",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.04801,
-    "lon": 35.91774,
-    "name": "Maraqiyya",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.06466,
-    "lon": 35.68544,
-    "name": "Muta",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.22047,
-    "lon": 35.24238,
-    "name": "Nabulus",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.79276,
-    "lon": 35.58877,
-    "name": "Jayhan",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.81449,
-    "lon": 38.38504,
-    "name": "al-Furat",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.15774,
-    "lon": 35.56271,
-    "name": "al-Urdunn",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.99287,
-    "lon": 36.42208,
-    "name": "al-Urunt/al-Urund",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.48862,
-    "lon": 36.47275,
-    "name": "Barada",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.29913,
-    "lon": 37.22956,
-    "name": "Quwayq",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.80583,
-    "lon": 35.28698,
-    "name": "Sayhan",
-    "topType": "waters",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.88099,
-    "lon": 36.02865,
-    "name": "Nawa",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.45245,
-    "lon": 37.38213,
-    "name": "Nihya ?",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.16598,
-    "lon": 36.84868,
-    "name": "Qara",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 36.72960,
-    "lon": 36.94952,
-    "name": "Qurus",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.12189,
-    "lon": 35.49123,
-    "name": "Qadas",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.29512,
-    "lon": 34.98155,
-    "name": "Qalansuwa",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 33.36423,
-    "lon": 35.56778,
-    "name": "Qaryat al-Uyun",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 32.49326,
-    "lon": 34.89906,
-    "name": "Qaysariyya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 35.99617,
-    "lon": 37.02701,
-    "name": "Qinnasrin",
-    "topType": "capitals",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.30870,
-    "lon": 34.25897,
-    "name": "Rafh",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.93133,
-    "lon": 36.41054,
-    "name": "Rafaniyya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 34.93350,
-    "lon": 36.75337,
-    "name": "Rastan",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
-{
-    "lat": 31.86043,
-    "lon": 35.43774,
-    "name": "Riha/Ariha",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
-    },
 
-{
-    "lat": 32.27085,
-    "lon": 35.15237,
-    "name": "Sabastiya",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 31.02207,
+        "lon": 32.60098,
+        "name": "al-Farama",
+        "topType": "poor",
+        "product": "wells",
+        "comment": "\"Brackish\" and salty, in a marsh, has wells"
     },
-{
-    "lat": 35.00401,
-    "lon": 37.07106,
-    "name": "Salamiyya",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 34.083333,
+        "lon": 25.866667,
+        "name": "al-Warrada",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
     },
-{
-    "lat": 35.89492,
-    "lon": 36.72250,
-    "name": "Sarmin",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 31.13051,
+        "lon": 33.805,
+        "name": "al-'Arish",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
     },
-{
-    "lat": 32.69627,
-    "lon": 36.55945,
-    "name": "Suwayda",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 30.42151,
+        "lon": 31.56946,
+        "name": "Bilbays",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
     },
-{
-    "lat": 36.86458,
-    "lon": 36.16107,
-    "name": "Tinat/Hisn al-Tinat",
-    "topType": "sites",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 30.36675,
+        "lon": 31.3735,
+        "name": "Mashtul",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
     },
-{
-    "lat": 36.23776,
-    "lon": 36.70483,
-    "name": "Tizin/Tuzin",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 30.71261,
+        "lon": 31.79577,
+        "name": "Faqus",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
     },
-{
-    "lat": 32.33910,
-    "lon": 35.38269,
-    "name": "Taasir",
-    "topType": "waystations",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 30.38342,
+        "lon": 31.51426,
+        "name": "Ghayfa",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
     },
-{
-    "lat": 34.54735,
-    "lon": 38.28754,
-    "name": "Tadmur",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 31.16476,
+        "lon": 32.08005,
+        "name": "Tuna",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
     },
-{
-    "lat": 35.63129,
-    "lon": 36.74697,
-    "name": "Tall Mannas",
-    "topType": "regions",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 30.02922,
+        "lon": 32.55613,
+        "name": "al-Qulzum",
+        "topType": "none",
+        "product": "none",
+        "comment": "no water or moisture, water carried in boats from the Suez, which itself is of poor but drinkable quality.  The water of the baths is incredibly salty.  It's on the Sea of China.  The waters of its baths are intensely salty"
     },
-
-{
-    "lat": 32.06237,
-    "lon": 34.75362,
-    "name": "Yafa",
-    "topType": "towns",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 31.21434,
+        "lon": 32.22632,
+        "name": "Tinnis",
+        "topType": "neutral",
+        "product": "lakes",
+        "comment": "on a small island in a lake. between the Mediterranean and the Nile. it \"has resources\" with water encircling it like a ring. Water is kept locked up in cisterns"
     },
-{
-    "lat": 31.87092,
-    "lon": 34.73521,
-    "name": "Yubna",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 31.21434,
+        "lon": 32.22632,
+        "name": "Tinnis",
+        "topType": "neutral",
+        "product": "cisterns",
+        "comment": "on a small island in a lake. between the Mediterranean and the Nile. it \"has resources\" with water encircling it like a ring. Water is kept locked up in cisterns"
     },
-{
-    "lat": 33.73115,
-    "lon": 36.08756,
-    "name": "Zabadani",
-    "topType": "villages",
-    "condition": 1,
-    "comment": "This is a comment for display",
+    {
+        "lat": 31.43948,
+        "lon": 31.79163,
+        "name": "Dimyat (Damietta)",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "also on an island in the lake. sometimes meet with fresh water, has more water than Tinnis and better baths. Situated where the Nile flows into the sea"
     },
-
+    {
+        "lat": 31.40769,
+        "lon": 31.87098,
+        "name": "Shata",
+        "topType": "none",
+        "product": "lakes",
+        "comment": "Situated on a lake"
+    },
+    {
+        "lat": 30.53687,
+        "lon": 31.70607,
+        "name": "Al-'Abbasiyya (al-'Abbasa)",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 31.03832,
+        "lon": 30.45721,
+        "name": "Damanhur",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 31.16357,
+        "lon": 30.70974,
+        "name": "Sanhur",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 31.178333,
+        "lon": 30.458889,
+        "name": "Banha",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 30.97564,
+        "lon": 31.14305,
+        "name": "al-Mahallat al-Kabira",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "On both sides of the river, with the far side being more prosperous"
+    },
+    {
+        "lat": 30.97209,
+        "lon": 31.16099,
+        "name": "Sandafa",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 31.14114,
+        "lon": 31.35004,
+        "name": "Damira",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "along the riverbank"
+    },
+    {
+        "lat": 31.28512,
+        "lon": 31.65916,
+        "name": "Daqahla",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 31.21021,
+        "lon": 29.89004,
+        "name": "Al-Iskandariyya",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "Water comes from the Nile, brought in by aqueduct to their cisterns during the flood. \"Rainfall is abundant.\"  The land is cultivated by rains. Where the Nile enters the Mediterranean"
+    },
+    {
+        "lat": 31.21021,
+        "lon": 29.89004,
+        "name": "Al-Iskandariyya",
+        "topType": "sweetest",
+        "product": "cisterns",
+        "comment": "Water comes from the Nile, brought in by aqueduct to their cisterns during the flood. \"Rainfall is abundant.\"  The land is cultivated by rains. Where the Nile enters the Mediterranean"
+    },
+    {
+        "lat": 31.41476,
+        "lon": 30.37993,
+        "name": "Al-Rashid (Rosetta)",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 31.58654,
+        "lon": 30.99815,
+        "name": "Burullus",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 30.04236,
+        "lon": 31.24793,
+        "name": "al-Fustat",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water \"palatable\" and comes from a canal created by one of the caliphs.  In fact, he considers it the sweetest water (169) with a most \"beneficient\" river, though they constantly fear a drought, and the water is muddy. The baths \"are the peak of perfection\" and \"have rested secure from injurious rains\" (169). Also has attractive drinking places. (168)"
+    },
+    {
+        "lat": 30.04236,
+        "lon": 31.24793,
+        "name": "al-Fustat",
+        "topType": "sweetest",
+        "product": "canals",
+        "comment": "water \"palatable\" and comes from a canal created by one of the caliphs.  In fact, he considers it the sweetest water (169) with a most \"beneficient\" river, though they constantly fear a drought, and the water is muddy. The baths \"are the peak of perfection\" and \"have rested secure from injurious rains\" (169). Also has attractive drinking places. (168)"
+    },
+    {
+        "lat": 29.866667,
+        "lon": 31.25,
+        "name": "Al-'Aziziyya",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 30.00712,
+        "lon": 31.20101,
+        "name": "al-Jiza",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "a quarter of al-Fustat that was made its own when one of the khalifs of the House of al-'Abbas  made a canal, creating al-Jazira"
+    },
+    {
+        "lat": 30.00712,
+        "lon": 31.20101,
+        "name": "al-Jiza",
+        "topType": "sweetest",
+        "product": "canals",
+        "comment": "a quarter of al-Fustat that was made its own when one of the khalifs of the House of al-'Abbas  made a canal, creating al-Jazira"
+    },
+    {
+        "lat": 30.13132,
+        "lon": 31.30864,
+        "name": "Ayn Shams",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "maintains one of the Nile dams which holds water during its yearly inundation"
+    },
+    {
+        "lat": 29.86002,
+        "lon": 31.29899,
+        "name": "Hulwan",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "has a public bath, some of its towns are either on the main stream of the Nile, or one of its branches"
+    },
+    {
+        "lat": 29.27671,
+        "lon": 31.10717,
+        "name": "Busir",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 29.35732,
+        "lon": 30.84084,
+        "name": "al-Fayyum",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 27.85847,
+        "lon": 30.75459,
+        "name": "Ushmunayn",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 28.95934,
+        "lon": 30.88707,
+        "name": "Sumusta",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 27.76693,
+        "lon": 30.70077,
+        "name": "Tanda",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 28.2737,
+        "lon": 30.69111,
+        "name": "Taha",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 28.60254,
+        "lon": 30.66489,
+        "name": "Bahnasa",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 28.52619,
+        "lon": 30.78633,
+        "name": "Qays",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "water comes from the Nile"
+    },
+    {
+        "lat": 20.75821,
+        "lon": 32.53148,
+        "name": "Barqa",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "inhabitants derive their drinking water from wells, as well as collect rainwater in cisterns"
+    },
+    {
+        "lat": 20.75821,
+        "lon": 32.53148,
+        "name": "Barqa",
+        "topType": "neutral",
+        "product": "cisterns",
+        "comment": "inhabitants derive their drinking water from wells, as well as collect rainwater in cisterns"
+    },
+    {
+        "lat": 29.3878,
+        "lon": 30.83177,
+        "name": "Dhat al-Humam",
+        "topType": "neutral",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 13.18858,
+        "lon": 32.856,
+        "name": "Atrabulus (Tripoli)",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "a large maritime city. drinking water comes from wells and rainwater"
+    },
+    {
+        "lat": 13.18858,
+        "lon": 32.856,
+        "name": "Atrabulus (Tripoli)",
+        "topType": "neutral",
+        "product": "rainwater",
+        "comment": "a large maritime city. drinking water comes from wells and rainwater"
+    },
+    {
+        "lat": 20.23553,
+        "lon": 30.73757,
+        "name": "Ajdabiya",
+        "topType": "neutral",
+        "product": "rains",
+        "comment": "get drinking water from the rains, but is also on a watercourse"
+    },
+    {
+        "lat": 20.23553,
+        "lon": 30.73757,
+        "name": "Ajdabiya",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "get drinking water from the rains, but is also on a watercourse"
+    },
+    {
+        "lat": 16.58779,
+        "lon": 31.20765,
+        "name": "Surt (Sirte)",
+        "topType": "neutral",
+        "product": "rains",
+        "comment": "get drinking water from the rains, but is also on a watercourse"
+    },
+    {
+        "lat": 16.58779,
+        "lon": 31.20765,
+        "name": "Surt (Sirte)",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "get drinking water from the rains, but is also on a watercourse"
+    },
+    {
+        "lat": 12.61839,
+        "lon": 32.89283,
+        "name": "Sabratha (Sabra)",
+        "topType": "neutral",
+        "product": "rains",
+        "comment": "drinking water from rains"
+    },
+    {
+        "lat": 10.06389,
+        "lon": 33.86721,
+        "name": "Qabis (Gabes)",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "fast-flowing stream"
+    },
+    {
+        "lat": 38.68214,
+        "lon": -5.01064,
+        "name": "Ghafiq",
+        "topType": "neutral",
+        "product": "unknown",
+        "comment": "maritime area"
+    },
+    {
+        "lat": 10.06389,
+        "lon": 35.75622,
+        "name": "al-Qayrawan (Kayrouan)",
+        "topType": "poor",
+        "product": "cisterns",
+        "comment": "water is inferior in quality, and they keep them in cisterns where rainwater is collected, as well as tanks. There is a canal that was built by Al-Mu'izz which helps"
+    },
+    {
+        "lat": 10.06389,
+        "lon": 35.75622,
+        "name": "al-Qayrawan (Kayrouan)",
+        "topType": "poor",
+        "product": "canal",
+        "comment": "water is inferior in quality, and they keep them in cisterns where rainwater is collected, as well as tanks. There is a canal that was built by Al-Mu'izz which helps"
+    },
+    {
+        "lat": 12.61839,
+        "lon": 32.89283,
+        "name": "Sabra (Sabratha)",
+        "topType": "neutral",
+        "product": "rainwater",
+        "comment": "water runs through the center. the inhabitants get their drinking water from the rain"
+    },
+    {
+        "lat": 10.69611,
+        "lon": 34.83825,
+        "name": "Asfaqus (Sfax)",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "maritime towns; drink water from wells and cisterns"
+    },
+    {
+        "lat": 10.69611,
+        "lon": 34.83825,
+        "name": "Asfaqus (Sfax)",
+        "topType": "neutral",
+        "product": "cisterns",
+        "comment": "maritime towns; drink water from wells and cisterns"
+    },
+    {
+        "lat": 10.92401,
+        "lon": 35.57107,
+        "name": "al-Mahdiyya",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "on the seacoast; drinking water here is from wells, and cisterns of rainwater"
+    },
+    {
+        "lat": 10.92401,
+        "lon": 35.57107,
+        "name": "al-Mahdiyya",
+        "topType": "neutral",
+        "product": "cisterns",
+        "comment": "on the seacoast; drinking water here is from wells, and cisterns of rainwater"
+    },
+    {
+        "lat": 10.49027,
+        "lon": 35.88736,
+        "name": "Susa (Sousse)",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "maritime town; drink water from wells and cisterns"
+    },
+    {
+        "lat": 10.49027,
+        "lon": 35.88736,
+        "name": "Susa (Sousse)",
+        "topType": "neutral",
+        "product": "cisterns",
+        "comment": "maritime town; drink water from wells and cisterns"
+    },
+    {
+        "lat": 10.05654,
+        "lon": 36.8522,
+        "name": "Tunis",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 9.69632,
+        "lon": 37.3155,
+        "name": "Banzard (Bizerta)",
+        "topType": "poor",
+        "product": "streams",
+        "comment": "stream of salty water enters from a lake near the sea"
+    },
+    {
+        "lat": 9.69632,
+        "lon": 37.3155,
+        "name": "Banzard (Bizerta)",
+        "topType": "poor",
+        "product": "lake",
+        "comment": "stream of salty water enters from a lake near the sea"
+    },
+    {
+        "lat": 8.75535,
+        "lon": 36.94626,
+        "name": "Tabarqa",
+        "topType": "poor",
+        "product": "streams",
+        "comment": "has a salty stream. people drink from wells"
+    },
+    {
+        "lat": 8.75535,
+        "lon": 36.94626,
+        "name": "Tabarqa",
+        "topType": "poor",
+        "product": "wells",
+        "comment": "has a salty stream. people drink from wells"
+    },
+    {
+        "lat": 8.38778,
+        "lon": 36.87572,
+        "name": "Marsa al-Kharaz",
+        "topType": "neutral",
+        "product": "unknown",
+        "comment": "on the seacoast"
+    },
+    {
+        "lat": 7.72615,
+        "lon": 36.8816,
+        "name": "Buna (Bone)",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "maritime town; drink from wells"
+    },
+    {
+        "lat": 9.14497,
+        "lon": 36.71678,
+        "name": "Baja",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "has a spring well that constantly flows"
+    },
+    {
+        "lat": 8.80681,
+        "lon": 36.13117,
+        "name": "Lurbus",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "drink water from wells"
+    },
+    {
+        "lat": 22.589167,
+        "lon": 32.678056,
+        "name": "Qarna",
+        "topType": "good",
+        "product": "streams",
+        "comment": "sweetwater stream"
+    },
+    {
+        "lat": 8.39513,
+        "lon": 35.48133,
+        "name": "Marmajanna",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "drink water from wells"
+    },
+    {
+        "lat": 9.11557,
+        "lon": 35.43342,
+        "name": "Sabiba",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 8.68918,
+        "lon": 36.19646,
+        "name": "Khawr al-Kaf",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "drink water from wells"
+    },
+    {
+        "lat": 8.80681,
+        "lon": 34.40267,
+        "name": "Qafsa",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 9.45373,
+        "lon": 33.7756,
+        "name": "Qastiliya",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 10.15211,
+        "lon": 36.66962,
+        "name": "Lafis",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 10.82109,
+        "lon": 37.13989,
+        "name": "Jazirat abi Sharik",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "drink water and irrigate farms from the same wells"
+    },
+    {
+        "lat": 7.13804,
+        "lon": 35.48731,
+        "name": "Baghay",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "water flows from the mountain"
+    },
+    {
+        "lat": 10.68876,
+        "lon": 35.83374,
+        "name": "Munastir",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 9.71034,
+        "lon": 37.30623,
+        "name": "Banzart",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 8.76423,
+        "lon": 36.94431,
+        "name": "Tabarqa",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 8.81416,
+        "lon": 36.1193,
+        "name": "Lurbus",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 6.86951,
+        "lon": 36.05753,
+        "name": "Taqiyus",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 7.75662,
+        "lon": 35.60293,
+        "name": "Miskiyana",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 7.14568,
+        "lon": 35.48035,
+        "name": "Baghay",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 5.37147,
+        "lon": 35.3098,
+        "name": "Tubna",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 5.05306,
+        "lon": 35.52592,
+        "name": "Maqqara",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 6.84822,
+        "lon": 36.06674,
+        "name": "Tijis",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 7.75092,
+        "lon": 35.60102,
+        "name": "al-Qustantiniyya",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 6.30454,
+        "lon": 36.41422,
+        "name": "Mila",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 5.73009,
+        "lon": 36.7766,
+        "name": "Jijil",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 5.42235,
+        "lon": 36.14133,
+        "name": "Satif",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 3.57847,
+        "lon": 36.73859,
+        "name": "Marsa al Dajjaj",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "on the seacoast; water comes from a stream and some springs"
+    },
+    {
+        "lat": 3.57847,
+        "lon": 36.73859,
+        "name": "Marsa al Dajjaj",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "on the seacoast; water comes from a stream and some springs"
+    },
+    {
+        "lat": 3.041944,
+        "lon": 36.7525,
+        "name": "Jazirat Bani Zagannaya (Alger)",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "Springs provide drinking water"
+    },
+    {
+        "lat": 3.17841,
+        "lon": 35.68751,
+        "name": "Ashir",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 1.36275,
+        "lon": 35.37465,
+        "name": "Tahart",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "streams run around it, \"flowing water aplenty\" (190)"
+    },
+    {
+        "lat": 0.61792,
+        "lon": 35.78983,
+        "name": "al-Batha",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 2.03227,
+        "lon": 36.21636,
+        "name": "Warifan",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 1.37112,
+        "lon": 36.49607,
+        "name": "Tanas",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "drinking water from a river"
+    },
+    {
+        "lat": 2.69341,
+        "lon": 36.10149,
+        "name": "Suq Kara",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 0.06557,
+        "lon": 35.21755,
+        "name": "Fakkan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "in a wadi with a flowing stream"
+    },
+    {
+        "lat": -4.22769,
+        "lon": 31.28572,
+        "name": "Sijilmasa",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "some distance from the river, which peters out just south of the town"
+    },
+    {
+        "lat": -7.13171,
+        "lon": 31.03507,
+        "name": "Dar'a",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "situated on a rapidly flowing river"
+    },
+    {
+        "lat": -5.85126,
+        "lon": 31.13899,
+        "name": "al-Nahhasin",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -5.02274,
+        "lon": 34.06082,
+        "name": "Fas",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "rapid flowing stream"
+    },
+    {
+        "lat": -5.88474,
+        "lon": 34.8269,
+        "name": "al-Basra",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -5.58346,
+        "lon": 34.48269,
+        "name": "Al-Jahid",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -5.42445,
+        "lon": 34.31696,
+        "name": "Sanhaja",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 0.45054,
+        "lon": 35.55188,
+        "name": "Hawwara",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -4.02684,
+        "lon": 34.23397,
+        "name": "Tiza",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -4.54571,
+        "lon": 34.11627,
+        "name": "Matmata",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -3.91804,
+        "lon": 34.64809,
+        "name": "Kazannaya",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -6.80532,
+        "lon": 34.04695,
+        "name": "Sala",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -5.98516,
+        "lon": 35.59953,
+        "name": "Azila",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -5.34913,
+        "lon": 35.87125,
+        "name": "Sabta (Ceuta)",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "on the Strait of Gibraltar"
+    },
+    {
+        "lat": -4.71309,
+        "lon": 35.20387,
+        "name": "Balad Ghumar",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -3.90967,
+        "lon": 35.22439,
+        "name": "Qal'at al-Nusur",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -3.29874,
+        "lon": 34.32042,
+        "name": "Tabarida",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -2.89703,
+        "lon": 34.42403,
+        "name": "Sa'",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -5.57509,
+        "lon": 33.9151,
+        "name": "Miknasa",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -5.60856,
+        "lon": 34.10241,
+        "name": "Walila",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -1.92623,
+        "lon": 35.07384,
+        "name": "Ghuzza",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 4.54272,
+        "lon": 35.64584,
+        "name": "al-Masila",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has flowing streams"
+    },
+    {
+        "lat": 5.05563,
+        "lon": 35.52905,
+        "name": "Maqqara",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 5.37362,
+        "lon": 35.30333,
+        "name": "Tubna",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 5.76343,
+        "lon": 34.83317,
+        "name": "Biskara",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has streams"
+    },
+    {
+        "lat": 6.67639,
+        "lon": 34.7405,
+        "name": "Badis",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has streams"
+    },
+    {
+        "lat": 5.85575,
+        "lon": 34.77421,
+        "name": "Tahudha",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 5.41979,
+        "lon": 34.6899,
+        "name": "Tawlaqa",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 5.62254,
+        "lon": 34.6653,
+        "name": "Bantiyus",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -7.69243,
+        "lon": 31.50717,
+        "name": "Aghmat Wayla (Aylan)",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -7.63384,
+        "lon": 31.45721,
+        "name": "[Aghmat] Warika",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -7.18192,
+        "lon": 31.79926,
+        "name": "Tandalt",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": -9.67586,
+        "lon": 30.16346,
+        "name": "Massa",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 38.115556,
+        "lon": 13.359722,
+        "name": "Balarm (Palermo)",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "a maritime town, situated on an island, with fountains. a river named Wadi 'Abbas irrigates it"
+    },
+    {
+        "lat": 37.65,
+        "lon": 12.5833,
+        "name": "Mazar",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 37.083889,
+        "lon": 15.276111,
+        "name": "Saraqusa (Syracuse)",
+        "topType": "neutral",
+        "product": "unknown",
+        "comment": "has a remarkable harbour; \"Surrounded by a fosse in which the seawater flows\" (192)"
+    },
+    {
+        "lat": 37.6167,
+        "lon": 15.1667,
+        "name": "al-Yaj (Acireale)",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from a permanent stream"
+    },
+    {
+        "lat": 37.5667,
+        "lon": 14.9,
+        "name": "Batarnu",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 45.644444,
+        "lon": 8.973889,
+        "name": "Massina",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 37.9167,
+        "lon": 13.9333,
+        "name": "Qal'at al-Sirat",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 37.8167,
+        "lon": 13.8833,
+        "name": "Qal'at Abi Thawr",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 38.045,
+        "lon": 13.120833,
+        "name": "Bartiniq (Portinico)",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "not maritime"
+    },
+    {
+        "lat": 37.91898,
+        "lon": -4.78135,
+        "name": "Qurtuba (Cordoba)",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "large stream in front of the town"
+    },
+    {
+        "lat": 37.9204,
+        "lon": -4.053,
+        "name": "Arjuna",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "drinking water comes from springs, while farms are irrigated by the rain"
+    },
+    {
+        "lat": 37.9204,
+        "lon": -4.053,
+        "name": "Arjuna",
+        "topType": "neutral",
+        "product": "rainwater",
+        "comment": "drinking water comes from springs, while farms are irrigated by the rain"
+    },
+    {
+        "lat": 37.98847,
+        "lon": -3.87676,
+        "name": "Qastalla",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "drinking water from wells, and people irrigate their gardens with norias"
+    },
+    {
+        "lat": 37.87641,
+        "lon": -3.34803,
+        "name": "Shawdhar",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "drinking water from springs"
+    },
+    {
+        "lat": 37.74285,
+        "lon": -3.98826,
+        "name": "Martush",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "have springs"
+    },
+    {
+        "lat": 37.87073,
+        "lon": -4.22025,
+        "name": "Hisn Bulkuna",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "water derived from some wells and one spring"
+    },
+    {
+        "lat": 37.87073,
+        "lon": -4.22025,
+        "name": "Hisn Bulkuna",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "water derived from some wells and one spring"
+    },
+    {
+        "lat": 37.78977,
+        "lon": -3.80302,
+        "name": "Jayyan (Jaen)",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "has 12 springs, with mills on 3 of them"
+    },
+    {
+        "lat": 37.45788,
+        "lon": -4.20406,
+        "name": "Bayghu (Priego)",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "has valleys in the mountains where springs bubble forth"
+    },
+    {
+        "lat": 37.20621,
+        "lon": -3.5998,
+        "name": "Gharnata (Granada)",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "on a stream"
+    },
+    {
+        "lat": 39.81332,
+        "lon": -3.62588,
+        "name": "Mantisha (Mentesa)",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "on a stream"
+    },
+    {
+        "lat": 37.9998,
+        "lon": -3.45773,
+        "name": "Bayyasa (Baeza)",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "drinking water comes from springs "
+    },
+    {
+        "lat": 21.36834,
+        "lon": 39.85793,
+        "name": "Makka",
+        "topType": "fair",
+        "product": "wells",
+        "comment": "has a well called Zamzam and behind it the Qubbat al-Sharab (The Dome of the Drink). also contains three reservoirs filled from a canal, cut by Zubayda from the Bustan Bani 'Amir. wells have middling water"
+    },
+    {
+        "lat": 21.36834,
+        "lon": 39.85793,
+        "name": "Makka",
+        "topType": "fair",
+        "product": "canals",
+        "comment": "has a well called Zamzam and behind it the Qubbat al-Sharab (The Dome of the Drink). also contains three reservoirs filled from a canal, cut by Zubayda from the Bustan Bani 'Amir. wells have middling water"
+    },
+    {
+        "lat": 14.851944,
+        "lon": 42.909722,
+        "name": "Mina",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "wells, water tanks"
+    },
+    {
+        "lat": 14.851944,
+        "lon": 42.909722,
+        "name": "Mina",
+        "topType": "neutral",
+        "product": "cisterns",
+        "comment": "wells, water tanks"
+    },
+    {
+        "lat": 24.30863,
+        "lon": 39.60283,
+        "name": "Dhu al-Hulayfa",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "has wells close by"
+    },
+    {
+        "lat": 22.58388,
+        "lon": 39.15982,
+        "name": "al-Juhfa",
+        "topType": "poor",
+        "product": "wells",
+        "comment": "some wells here, with a spring 2 miles away. has a large reservoir that sometimes runs scarce"
+    },
+    {
+        "lat": 21.19409,
+        "lon": 40.42678,
+        "name": "al-Ta'if",
+        "topType": "fair",
+        "product": "unknown",
+        "comment": "has cool water, which freezes over at times"
+    },
+    {
+        "lat": 21.45906,
+        "lon": 39.21773,
+        "name": "Judda",
+        "topType": "poor",
+        "product": "imported",
+        "comment": "on the seashore, but \"the people here suffer great inconvenience from deficiency of water\" (72) despite the number of reservoirs, so water is brought in from a distance away"
+    },
+    {
+        "lat": 21.45906,
+        "lon": 39.21773,
+        "name": "Judda",
+        "topType": "poor",
+        "product": "cisterns",
+        "comment": "on the seashore, but \"the people here suffer great inconvenience from deficiency of water\" (72) despite the number of reservoirs, so water is brought in from a distance away"
+    },
+    {
+        "lat": 24.3857,
+        "lon": 39.64999,
+        "name": "Yathrib (al-Madina)",
+        "topType": "fair",
+        "product": "cisterns",
+        "comment": "has a few cultivated fields, with water of but middling quality. there are cisterns that are filled by aquaducts"
+    },
+    {
+        "lat": 24.35217,
+        "lon": 39.61774,
+        "name": "Quba",
+        "topType": "good",
+        "product": "unknown",
+        "comment": "the water is fresh"
+    },
+    {
+        "lat": 24.532778,
+        "lon": 39.611111,
+        "name": "Uhud",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "has a well"
+    },
+    {
+        "lat": 29.65,
+        "lon": 41.416667,
+        "name": "Al-'Aqiq",
+        "topType": "good",
+        "product": "unknown",
+        "comment": "water is fresh"
+    },
+    {
+        "lat": 23.65255,
+        "lon": 38.85975,
+        "name": "Badr",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "on the coast; the 'Ayn al-Nabi (The Spring of the Prophet) is found here"
+    },
+    {
+        "lat": 23.75433,
+        "lon": 38.56846,
+        "name": "al-Jar",
+        "topType": "neutral",
+        "product": "imported",
+        "comment": "on the seacoast, water is carried from Badr to al-Jar"
+    },
+    {
+        "lat": 24.0479,
+        "lon": 38.23124,
+        "name": "Yanbu'",
+        "topType": "good",
+        "product": "unknown",
+        "comment": "has an abundant supply of water"
+    },
+    {
+        "lat": 25.62844,
+        "lon": 38.63514,
+        "name": "al-Marwa",
+        "topType": "good",
+        "product": "canals",
+        "comment": "drinking water derived from a canal that flows abundantly"
+    },
+    {
+        "lat": 24.97391,
+        "lon": 37.41205,
+        "name": "al-Hawra'",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "is a port town"
+    },
+    {
+        "lat": 26.47477,
+        "lon": 38.01189,
+        "name": "Qurh",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "in a wadi"
+    },
+    {
+        "lat": 25.95834,
+        "lon": 41.74814,
+        "name": "al-Hijr",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "has many wells"
+    },
+    {
+        "lat": 14.21069,
+        "lon": 43.23337,
+        "name": "Zabid",
+        "topType": "good",
+        "product": "wells",
+        "comment": "wells are sweet and clean baths. Ibn Zayad made a channel lead to it"
+    },
+    {
+        "lat": 14.21069,
+        "lon": 43.23337,
+        "name": "Zabid",
+        "topType": "good",
+        "product": "canals",
+        "comment": "wells are sweet and clean baths. Ibn Zayad made a channel lead to it"
+    },
+    {
+        "lat": 12.78199,
+        "lon": 45.00527,
+        "name": "Adan",
+        "topType": "poor",
+        "product": "cisterns",
+        "comment": "on a seaport, with an inlet behind the mountain; the water in wells is salty, so they use cisterns and water carried in from a distance of one stage away at Iram of the Columns"
+    },
+    {
+        "lat": 12.78199,
+        "lon": 45.00527,
+        "name": "Adan",
+        "topType": "poor",
+        "product": "imported",
+        "comment": "on a seaport, with an inlet behind the mountain; the water in wells is salty, so they use cisterns and water carried in from a distance of one stage away at Iram of the Columns"
+    },
+    {
+        "lat": 13.31523,
+        "lon": 43.22241,
+        "name": "Mukha",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "inhabitants derive drinking water from a spring outside the well"
+    },
+    {
+        "lat": 14.49886,
+        "lon": 43.01908,
+        "name": "Ghalafiqa",
+        "topType": "good",
+        "product": "wells",
+        "comment": "a port on the shore, has wells of fresh water"
+    },
+    {
+        "lat": 16.46296,
+        "lon": 42.75519,
+        "name": "al-Sharja",
+        "topType": "neutral",
+        "product": "imported",
+        "comment": "on the coast, water must be brought to it from a distance"
+    },
+    {
+        "lat": 12.78317,
+        "lon": 45.0101,
+        "name": "Atana",
+        "topType": "neutral",
+        "product": "imported",
+        "comment": "on the coast, water must be brought to it from a distance"
+    },
+    {
+        "lat": 13.5805,
+        "lon": 46.62519,
+        "name": "Athr",
+        "topType": "poor",
+        "product": "imported",
+        "comment": "Water must be brought from a distance and the public bath is filthy"
+    },
+    {
+        "lat": 24.30248,
+        "lon": 56.71892,
+        "name": "Suhar",
+        "topType": "good",
+        "product": "unknown",
+        "comment": "has purer water than 'Athr"
+    },
+    {
+        "lat": 18.63822,
+        "lon": 41.41935,
+        "name": "Haly",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "is a coastal town"
+    },
+	{
+        "lat": 19.83216,
+        "lon": 40.79334,
+        "name": "al-Sirrayn",
+        "topType": "neutral",
+        "product": "rainwater",
+        "comment": "has a reservoir for storing rainwater on the edge of town and is the port"
+    },
+    {
+        "lat": 22.80916,
+        "lon": 57.54192,
+        "name": "Nazwa",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "often flooded in winter by the river. the drinking water is from the streams and wells"
+    },
+    {
+        "lat": 22.80916,
+        "lon": 57.54192,
+        "name": "Nazwa",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "often flooded in winter by the river. the drinking water is from the streams and wells"
+    },
+    {
+        "lat": 23.03377,
+        "lon": 56.86106,
+        "name": "al-Sirr",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "the drinking water is from streams and wells"
+    },
+    {
+        "lat": 23.03377,
+        "lon": 56.86106,
+        "name": "al-Sirr",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "the drinking water is from streams and wells"
+    },
+    {
+        "lat": 23.51546,
+        "lon": 56.34077,
+        "name": "Dhank",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "irrigation water is drawn from wells, the water of which is close to the surface; cattle draw it. most of the wells are in the mountains"
+    },
+    {
+        "lat": 32.0469,
+        "lon": 44.38095,
+        "name": "al-Kufa",
+        "topType": "poor",
+        "product": "rivers",
+        "comment": "the river flows to the side of the city towards Baghdad; the wells are of brackish water, but drinkable, with underground conduits"
+    },
+    {
+        "lat": 31.7787,
+        "lon": 44.16721,
+        "name": "al-Qadisiyya",
+        "topType": "fair",
+        "product": "canals",
+        "comment": "a canal carries water between the Euphrates to a reservoir; there are springs of tolerable water and another watercourse which they cause to flow around to the desert-side gate"
+    },
+    {
+        "lat": 30.40472,
+        "lon": 47.71794,
+        "name": "Al-Basra",
+        "topType": "good",
+        "product": "canals",
+        "comment": "two canals from the Tigris - Nahr al-Ubulla and Nahr Ma'qil - flow by the city. the city stretches along the river and the the canal is adistance of 3 miles. has excellent baths, but the water is scarce"
+    },
+    {
+        "lat": 36.630833,
+        "lon": 43.737778,
+        "name": "Al-Kalla'",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "situated along the canal"
+    },
+    {
+        "lat": 30.49856,
+        "lon": 47.83653,
+        "name": "Al-Ubulla",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "on the Tigris at the mouth of the canal"
+    },
+    {
+        "name": "Shiqq 'Uthman",
+        "comment": "opposite Al-Ubulla on the opposite end of the south bank at the extreme end of the canal"
+    },
+    {
+        "lat": 30.076111,
+        "lon": 48.565278,
+        "name": "Abbadan",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "on an island, lying between the Tigris of al-Iraq and river of Khuzistan on the coast. yet, the fresh water is scarce, with the sea surrounding it entirely"
+    },
+    {
+        "lat": 32.19906,
+        "lon": 46.32048,
+        "name": "Wasit",
+        "topType": "good",
+        "product": "unknown",
+        "comment": "water is sweet"
+    },
+    {
+        "lat": 33.35759,
+        "lon": 44.35661,
+        "name": "Baghdad",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "founded to be close to water - on the banks of al-Sarat. between the two rivers. the canals from the Euphrates flow into the Tigris south of the city, but to the front of the city and to the north of it only the Tigris flows"
+    },
+    {
+        "lat": 33.43222,
+        "lon": 44.59556,
+        "name": "Al-Nahrawan",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "town situated on both banks of the canal"
+    },
+    {
+        "lat": 33.11108,
+        "lon": 44.36944,
+        "name": "Sarsar",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "canal flows along it"
+    },
+    {
+        "lat": 32.70391,
+        "lon": 44.34776,
+        "name": "Qasr Ibn Hubayra",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "Water is brought to it from the Euphrates"
+    },
+    {
+        "lat": 32.74114,
+        "lon": 45.31952,
+        "name": "Jarjaraya",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "a canal flows around part of the town on the western side of the Tigris"
+    },
+    {
+        "lat": 34.02694,
+        "lon": 44.08668,
+        "name": "Alth",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "connected by a canal to the Tigris; has wells of easily accessible fresh water, not deep but copious"
+    },
+    {
+        "lat": 34.02694,
+        "lon": 44.08668,
+        "name": "Alth",
+        "topType": "good",
+        "product": "wells",
+        "comment": "connected by a canal to the Tigris; has wells of easily accessible fresh water, not deep but copious"
+    },
+    {
+        "lat": 35.27911,
+        "lon": 43.49636,
+        "name": "Al-Sinn",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "situated on the Tigris on the east  of it flows the River Zab"
+    },
+    {
+        "lat": 34.47903,
+        "lon": 45.85673,
+        "name": "Hulwan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "nearby a small stream"
+    },
+    {
+        "lat": "43.1257336.32392",
+        "lon": 43.12573,
+        "name": "Al-Mawsil (Mosul)",
+        "topType": "fair",
+        "product": "rivers",
+        "comment": "very deep water level, making drawing it difficult. lies on river Zubayda. the wells are salty, so drinking water comes from the Tigris and Zubayda Rivers. Yet the water is not bad"
+    },
+    {
+        "lat": "43.1257336.32392",
+        "lon": 43.12573,
+        "name": "Al-Mawsil (Mosul)",
+        "topType": "fair",
+        "product": "wells",
+        "comment": "very deep water level, making drawing it difficult. lies on river Zubayda. the wells are salty, so drinking water comes from the Tigris and Zubayda Rivers. Yet the water is not bad"
+    },
+    {
+        "lat": 36.359444,
+        "lon": 43.152778,
+        "name": "Nunawa (Ninevah)",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "lies along the River al-Khusar"
+    },
+    {
+        "lat": 34.10618,
+        "lon": 42.38721,
+        "name": "Al-Haditha",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "Along the banks of the Tigris"
+    },
+    {
+        "lat": 37.02848,
+        "lon": 42.95071,
+        "name": "Al-Hasaniyya",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "on a river that approahes from Urmiya"
+    },
+    {
+        "lat": 37.28424,
+        "lon": 42.19923,
+        "name": "Jazirat Ibn Umar",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "water flows on three sides, and the Tigris flows through it and the nearby mountain."
+    },
+    {
+        "lat": 36.65978,
+        "lon": 42.43507,
+        "name": "Ba'aynatha",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has streams"
+    },
+    {
+        "lat": 36.47036,
+        "lon": 42.7585,
+        "name": "Balad",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "\"on the Tigris, which here has an abundant flow\""
+    },
+    {
+        "lat": 36.99418,
+        "lon": 41.71745,
+        "name": "Adhrama",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "inhabitants ger their drinking water from wells"
+    },
+    {
+        "lat": 36.95111,
+        "lon": 42.07457,
+        "name": "Barqa'id",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "inhabitants get their drinking water from wells"
+    },
+    {
+        "lat": 37.18499,
+        "lon": 40.94255,
+        "name": "Dara",
+        "topType": "neutral",
+        "product": "imported",
+        "comment": "An aqueduct distributes water over housetops and the mosque to a low-lying area"
+    },
+    {
+        "lat": 36.3212,
+        "lon": 41.89264,
+        "name": "Sinjar",
+        "topType": "fair",
+        "product": "streams",
+        "comment": "in a desert, but nonetheless has a stream of \"passably good water\" (119) as well as numerous springs"
+    },
+    {
+        "lat": 36.3212,
+        "lon": 41.89264,
+        "name": "Sinjar",
+        "topType": "fair",
+        "product": "springs",
+        "comment": "in a desert, but nonetheless has a stream of \"passably good water\" (119) as well as numerous springs"
+    },
+    {
+        "lat": 36.83795,
+        "lon": 40.05984,
+        "name": "Ra's al'Ayn",
+        "topType": "neutral",
+        "product": "lakes",
+        "comment": "on a plain where water gushes from many springs. also has a lake 2 fathoms deep. 360 springs combine to form a stream that goes to al-Raqqa"
+    },
+    {
+        "lat": 36.83795,
+        "lon": 40.05984,
+        "name": "Ra's al'Ayn",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "on a plain where water gushes from many springs. also has a lake 2 fathoms deep. 360 springs combine to form a stream that goes to al-Raqqa"
+    },
+    {
+        "lat": 36.83795,
+        "lon": 40.05984,
+        "name": "Ra's al'Ayn",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "on a plain where water gushes from many springs. also has a lake 2 fathoms deep. 360 springs combine to form a stream that goes to al-Raqqa"
+    },
+    {
+        "lat": 36.206389,
+        "lon": 36.157222,
+        "name": "Antakiya",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "has a number of springs to the west of the Tigris. also has a \"Water Gate\" among its five gates"
+    },
+    {
+        "lat": 36.206389,
+        "lon": 36.157222,
+        "name": "Antakiya",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "has a number of springs to the west of the Tigris. also has a \"Water Gate\" among its five gates"
+    },
+    {
+        "lat": 38.14508,
+        "lon": 41.00656,
+        "name": "Mayyafariqin",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "drinking water from springs and a stream"
+    },
+    {
+        "lat": 38.14508,
+        "lon": 41.00656,
+        "name": "Mayyafariqin",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from springs and a stream"
+    },
+    {
+        "lat": 36.23972,
+        "lon": 41.62311,
+        "name": "Al-Jibal (al-Janab?)",
+        "topType": "fair",
+        "product": "canals",
+        "comment": "drinking water is from canals of middling water"
+    },
+    {
+        "lat": 37.69592,
+        "lon": 41.42096,
+        "name": "Hisn Kayfa",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "drinking water of the inhabitants is from the Tigris"
+    },
+    {
+        "lat": 36.88647,
+        "lon": 39.08954,
+        "name": "Harran",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "has a channel and the fields are irrigated from wells"
+    },
+    {
+        "lat": 36.88647,
+        "lon": 39.08954,
+        "name": "Harran",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "has a channel and the fields are irrigated from wells"
+    },
+    {
+        "lat": 36.19993,
+        "lon": 37.1767,
+        "name": "Halab",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "has a citadel with its own water supply. the people drink from the Quwayq River"
+    },
+    {
+        "lat": 34.730833,
+        "lon": 36.709444,
+        "name": "Hims",
+        "topType": "neutral",
+        "product": "rainwater",
+        "comment": "Most drinking water comes from rainfall, although there is a river"
+    },
+    {
+        "lat": 34.730833,
+        "lon": 36.709444,
+        "name": "Hims",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "Most drinking water comes from rainfall, although there is a river"
+    },
+    {
+        "lat": 33.52454,
+        "lon": 36.30364,
+        "name": "Dimashq (Dimascus)",
+        "topType": "sweetest",
+        "product": "canals",
+        "comment": "best hot baths to be found anywhere, as well as the most beautiful fountains. Also contains the Ubulla Canal"
+    },
+    {
+        "lat": 35.18022,
+        "lon": 35.96911,
+        "name": "Baniyas",
+        "topType": "poor",
+        "product": "rivers",
+        "comment": "an extremely cold river gushes out in the middle of the city from the \"Mountain of Snow\" (137) Yet, the drinking water is bad"
+    },
+    {
+        "lat": 32.78303,
+        "lon": 35.50971,
+        "name": "Tabariyya (Tiberias)",
+        "topType": "poor",
+        "product": "lakes",
+        "comment": "situated in the Wadi of Kan'an, near the lake. there are 8 hot baths and numerous basins of hot water. The drinking water is from the lake.  Yet, it tastes bad because both the baths and the hot springs flow into it, though it still is \"Easy to digest\" (137)"
+    },
+    {
+        "lat": 32.78303,
+        "lon": 35.50971,
+        "name": "Tabariyya (Tiberias)",
+        "topType": "poor",
+        "product": "springs",
+        "comment": "situated in the Wadi of Kan'an, near the lake. there are 8 hot baths and numerous basins of hot water. The drinking water is from the lake.  Yet, it tastes bad because both the baths and the hot springs flow into it, though it still is \"Easy to digest\" (137)"
+    },
+    {
+        "lat": 33.12526,
+        "lon": 35.49121,
+        "name": "Qadas",
+        "topType": "neutral",
+        "product": "lakes",
+        "comment": "people drink from 3 springs, and have one bath. the waters flow into the Lake of Tiberias thanks to a dam"
+    },
+    {
+        "lat": 33.12526,
+        "lon": 35.49121,
+        "name": "Qadas",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "people drink from 3 springs, and have one bath. the waters flow into the Lake of Tiberias thanks to a dam"
+    },
+    {
+        "lat": 33.2783,
+        "lon": 35.2182,
+        "name": "Jabal 'Amila",
+        "topType": "neutral",
+        "product": "rainwater",
+        "comment": "rainfall waters the fields and is along the sea"
+    },
+    {
+        "lat": 32.50092,
+        "lon": 35.48967,
+        "name": "Baysan",
+        "topType": "poor",
+        "product": "rivers",
+        "comment": "lies along the river. Water is adbundant, but hard to digest.  there is a stream that cuts through the town"
+    },
+    {
+        "lat": 32.50092,
+        "lon": 35.48967,
+        "name": "Baysan",
+        "topType": "poor",
+        "product": "streams",
+        "comment": "lies along the river. Water is adbundant, but hard to digest.  there is a stream that cuts through the town"
+    },
+    {
+        "lat": 32.61191,
+        "lon": 35.26922,
+        "name": "Al-Lajjun",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has running water"
+    },
+    {
+        "lat": 32.8655,
+        "lon": 35.21373,
+        "name": "Kabul",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "is a coastal town"
+    },
+    {
+        "lat": 32.92794,
+        "lon": 35.07575,
+        "name": "Akka",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "fortified city on the sea"
+    },
+    {
+        "lat": 33.27172,
+        "lon": 35.20987,
+        "name": "Sur/Tyre",
+        "topType": "neutral",
+        "product": "imported",
+        "comment": "fortified town in the sea, connected to mainland by only one causeway. water is brought to the island by an overhead aqueduct"
+    },
+    {
+        "lat": 31.9268,
+        "lon": 34.86175,
+        "name": "Al-Ramla",
+        "topType": "good",
+        "product": "streams",
+        "comment": "The water is good to drink and \"flows freely\" (139), but not in winter.  The wells are deep and salty, and the rainwater is held in closed cisterns, so the poor go thirsty and people must pay a fee for the baths which pay for the attendants to turn the water wheels"
+    },
+    {
+        "lat": 31.9268,
+        "lon": 34.86175,
+        "name": "Al-Ramla",
+        "topType": "good",
+        "product": "cisterns",
+        "comment": "The water is good to drink and \"flows freely\" (139), but not in winter.  The wells are deep and salty, and the rainwater is held in closed cisterns, so the poor go thirsty and people must pay a fee for the baths which pay for the attendants to turn the water wheels"
+    },
+    {
+        "lat": 31.781944,
+        "lon": 35.19908,
+        "name": "Bayt al-Maqdis (Jerusalem)",
+        "topType": "bad",
+        "product": "canals",
+        "comment": "has the filthiest baths. there is an abundance of water. in fact \"there is no place in Jerusalem but where one may get water, and here the call to water.\" there are 3 great tanks (Birkat Bani Isra'il, Birkat Sulayman, and Birkat 'Iyadh). water channels lead to the tanks along with 20 underground capacious cisterns, and most quarters have a public fountain, although in some cases it is little more than drains from the streets.  On one end of the city are two pools to collect the floods of winter rains, with channels carrying water in spring to fill the cisterns"
+    },
+    {
+        "lat": 31.781944,
+        "lon": 35.19908,
+        "name": "Bayt al-Maqdis (Jerusalem)",
+        "topType": "bad",
+        "product": "cisterns",
+        "comment": "has the filthiest baths. there is an abundance of water. in fact \"there is no place in Jerusalem but where one may get water, and here the call to water.\" there are 3 great tanks (Birkat Bani Isra'il, Birkat Sulayman, and Birkat 'Iyadh). water channels lead to the tanks along with 20 underground capacious cisterns, and most quarters have a public fountain, although in some cases it is little more than drains from the streets.  On one end of the city are two pools to collect the floods of winter rains, with channels carrying water in spring to fill the cisterns"
+    },
+    {
+        "lat": 31.76836,
+        "lon": 35.23805,
+        "name": "Sulwan (Siloam)",
+        "topType": "fair",
+        "product": "springs",
+        "comment": "Has a spring with water of moderate quality, used to irrigate.  Also the site of Bi'r Ayyub (Job's Well) to which the water of Zamzam is said to visit on the Night of 'Arafa (ninth day of the month of Pilgrimmage). (144)"
+    },
+    {
+        "lat": 34.42389,
+        "lon": 36.22111,
+        "name": "Wadi Jahannam",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "The Wadi Jahannam runs from this sanctuary."
+    },
+    {
+        "lat": 31.53125,
+        "lon": 35.08654,
+        "name": "Habra (Hebron)",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "a small water conduit is connected to houses built around the mosque for pilgrims. along the Lake of Sughar (Dead Sea) along twelve miles of seashore. It has been declared \"blessed\" by God in that it needs \"neither irrigation nor the watering of rivers\" (145)"
+    },
+    {
+        "lat": 31.49579,
+        "lon": 34.45449,
+        "name": "Ghazza (Gaza)",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "is close to the sea"
+    },
+    {
+        "lat": 31.50042,
+        "lon": 34.42366,
+        "name": "Mimas",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "on the sea"
+    },
+    {
+        "lat": 31.66691,
+        "lon": 34.55469,
+        "name": "Asqalan (Ascalon)",
+        "topType": "fair",
+        "product": "unknown",
+        "comment": "on the sea, but has an unsafe harbour with water of middling quality"
+    },
+    {
+        "lat": 32.06156,
+        "lon": 34.75356,
+        "name": "Yafa (Jaffa)",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "on the sea,; the port of al-Ramla"
+    },
+    {
+        "lat": 32.49321,
+        "lon": 34.90001,
+        "name": "Qaysariyya (Caesarea)",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "no \"city more beautiful or with no bounty\" on the Mediterranean (146) with drinking water coming from wells and cisterns"
+    },
+    {
+        "lat": 32.49321,
+        "lon": 34.90001,
+        "name": "Qaysariyya (Caesarea)",
+        "topType": "neutral",
+        "product": "cisterns",
+        "comment": "no \"city more beautiful or with no bounty\" on the Mediterranean (146) with drinking water coming from wells and cisterns"
+    },
+    {
+        "lat": 32.22343,
+        "lon": 35.2407,
+        "name": "Nabulus",
+        "topType": "nuetral",
+        "product": "streams",
+        "comment": "has a stream of running water through it"
+    },
+    {
+        "lat": 31.866667,
+        "lon": 35.45,
+        "name": "Ariha (Jericho)",
+        "topType": "sweetest",
+        "product": "springs",
+        "comment": "fields are watered from springs, and the drinking water is the \"lightest on digestion that you will find in Islam\" (147)"
+    },
+    {
+        "lat": 31.93207,
+        "lon": 35.91747,
+        "name": "Amman",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has many streams flow the town"
+    },
+    {
+        "lat": 31.84265,
+        "lon": 34.97555,
+        "name": "Amawas (Emmaus)",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "lies toward the sea, but the population has moved because the wells lie on edge of the hill country (148)"
+    },
+    {
+        "lat": 31.03794,
+        "lon": 35.46578,
+        "name": "Sughar",
+        "topType": "worst",
+        "product": "lakes",
+        "comment": "the water here is vile and is \"hot as hellfire\" (149). lies on the Overturned Lake (Dead Sea)"
+    },
+    {
+        "lat": 29.54282,
+        "lon": 34.93982,
+        "name": "Wayla",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "on the edge of a branch of the Sea of China"
+    },
+    {
+        "lat": 35.9457,
+        "lon": 39.04911,
+        "name": "al-Raqqa",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "along the Euphrates"
+    },
+    {
+        "lat": 33.64541,
+        "lon": 42.80516,
+        "name": "Hit",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "along the Euphrates"
+    },
+    {
+        "lat": 33.39529,
+        "lon": 43.70169,
+        "name": "al-Anbar",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "along the Euphrates"
+    },
+    {
+        "lat": 31.7787,
+        "lon": 44.16721,
+        "name": "al-Qadisiyya",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "along the Euphrates"
+    },
+    {
+        "lat": 30.33599,
+        "lon": 48.27639,
+        "name": "Abbadan",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "along the Euphrates"
+    },
+    {
+        "lat": 32.836944,
+        "lon": 36.763333,
+        "name": "Tayma'",
+        "topType": "good",
+        "product": "springs",
+        "comment": "has abundant water with an excellent spring which flows through an iron pipe to a pool from which water is distributed among the gardens. also have sweet water wells"
+    },
+    {
+        "lat": 32.836944,
+        "lon": 36.763333,
+        "name": "Tayma'",
+        "topType": "good",
+        "product": "wells",
+        "comment": "has abundant water with an excellent spring which flows through an iron pipe to a pool from which water is distributed among the gardens. also have sweet water wells"
+    },
+    {
+        "lat": 31.678056,
+        "lon": 37.279722,
+        "name": "al-Ghamr",
+        "topType": "good",
+        "product": "streams",
+        "comment": "water has a sandy spot where an abundance of sweet water flows"
+    },
+    {
+        "lat": 15.624722,
+        "lon": 44.4875,
+        "name": "Thajir",
+        "topType": "poor",
+        "product": "streams",
+        "comment": "water here is not good, nor are there many streams"
+    },
+    {
+        "lat": 26.91997,
+        "lon": 36.07315,
+        "name": "al-'Awnid",
+        "topType": "poor",
+        "product": "streams",
+        "comment": "has two streams close to each other, but both have bad water "
+    },
+    {
+        "lat": 30.297222,
+        "lon": 38.698333,
+        "name": "al-Nabk",
+        "topType": "good",
+        "product": "streams",
+        "comment": "has two streams, with one being sweeter than the other. and a road between the two. A distance away, the name of which he does not remember, is a stream in a thicket and a sweet water well, which does not flow very well."
+    },
+    {
+        "lat": 12.996111,
+        "lon": 44.916667,
+        "name": "Al-Jarba",
+        "topType": "worst",
+        "product": "streams",
+        "comment": "there is a couple of streams, with stinking water."
+    },
+    {
+        "lat": 30.049167,
+        "lon": 38.7175,
+        "name": "Arfaja",
+        "topType": "good",
+        "product": "streams",
+        "comment": "has two streams of sweet water"
+    },
+    {
+        "lat": 36.396667,
+        "lon": 37.609167,
+        "name": "Mukhri",
+        "topType": "worst",
+        "product": "streams",
+        "comment": "\"God has denounced it for its bad water, which loosens the bowels of men and camels\" (212); has two streams and is apparently named after the diarrhea it instills in the consumer"
+    },
+    {
+        "lat": 26.65,
+        "lon": 39.3,
+        "name": "Waqisa",
+        "topType": "good",
+        "product": "springs",
+        "comment": "has sweet wells and has a large pool in which the water springs up. "
+    },
+    {
+        "lat": 29.526667,
+        "lon": 35.007778,
+        "name": "al-'Aqaba",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "has deep wells"
+    },
+    {
+        "lat": 13.846944,
+        "lon": 45.976667,
+        "name": "al-Qa'",
+        "topType": "poor",
+        "product": "wells",
+        "comment": "destroyed city that has a well."
+    },
+    {
+        "lat": 29.396111,
+        "lon": 43.565556,
+        "name": "Zubala",
+        "topType": "good",
+        "product": "wells",
+        "comment": "has some splendid wells cut in the rock, as well as a number of small wells."
+    },
+    {
+        "lat": 15.459722,
+        "lon": 44.265278,
+        "name": "Al-Bitan",
+        "topType": "poor",
+        "product": "wells",
+        "comment": "had wells that are now in disuse. the place is now in ruins"
+    },
+    {
+        "lat": 27.114167,
+        "lon": 42.518056,
+        "name": "Fayd",
+        "topType": "fair",
+        "product": "springs",
+        "comment": "has baths and a pool. has springs and wells, and ponds of middling water, but there is sweet water further away"
+    },
+    {
+        "lat": 27.114167,
+        "lon": 42.518056,
+        "name": "Fayd",
+        "topType": "fair",
+        "product": "wells",
+        "comment": "has baths and a pool. has springs and wells, and ponds of middling water, but there is sweet water further away"
+    },
+    {
+        "lat": 39.67698,
+        "lon": 67.02199,
+        "name": "Samarqand",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "has 12 rural districts, six south of the river (the River al-Sughd), which he argues is not the the river that leads out from a place called Bukhara. has abundant water from a deep river. a moat surrounds the inner city with water brought to it with leaden pipes"
+    },
+    {
+        "lat": 40.91214,
+        "lon": 71.35303,
+        "name": "Akhsikath",
+        "topType": "good",
+        "product": "streams",
+        "comment": "copiously flowing streams with an inner city that has numerous canals that pour into reservoirs"
+    },
+    {
+        "lat": 40.91214,
+        "lon": 71.35303,
+        "name": "Akhsikath",
+        "topType": "good",
+        "product": "canals",
+        "comment": "copiously flowing streams with an inner city that has numerous canals that pour into reservoirs"
+    },
+    {
+        "lat": 40.81072,
+        "lon": 73.39541,
+        "name": "Uzkand",
+        "topType": "good",
+        "product": "streams",
+        "comment": "stream through which one must wade because there isn't a bridge. has water flowing to the markets, mosque, and quhandiz"
+    },
+    {
+        "lat": 35.503611,
+        "lon": 66.583333,
+        "name": "Ush",
+        "topType": "sweetest",
+        "product": "streams",
+        "comment": "many streams nearby of excellent quality"
+    },
+    {
+        "lat": 40.55651,
+        "lon": 72.17823,
+        "name": "Quba",
+        "topType": "good",
+        "product": "unknown",
+        "comment": "al-Muqaddasi quotes scholars as saying: \"Farghana is Quba; everything else there is grass and water.\" (225)"
+    },
+    {
+        "lat": 40.4977,
+        "lon": 71.76047,
+        "name": "Marghinan",
+        "topType": "good",
+        "product": "streams",
+        "comment": "has a stream at the gate of the mosque"
+    },
+    {
+        "lat": 40.28558,
+        "lon": 70.52266,
+        "name": "Kand",
+        "topType": "good",
+        "product": "streams",
+        "comment": "a stream flows in the middle of the markets"
+    },
+    {
+        "lat": 42.3019,
+        "lon": 69.7703,
+        "name": "Isbijab",
+        "topType": "good",
+        "product": "unknown",
+        "comment": "drought unknown in this area"
+    },
+    {
+        "lat": 34.738611,
+        "lon": 66.268889,
+        "name": "Taraz",
+        "topType": "good",
+        "product": "streams",
+        "comment": "a large stream flows by the madina (school)"
+    },
+    {
+        "lat": 41.00367,
+        "lon": 70.23255,
+        "name": "Tunkath",
+        "topType": "good",
+        "product": "streams",
+        "comment": "a stream runs through the inner city"
+    },
+    {
+        "lat": 39.72659,
+        "lon": 68.8297,
+        "name": "Bunjikath",
+        "topType": "good",
+        "product": "streams",
+        "comment": "water is abundant. six streams flow through it, similar to a large river which flows alongside."
+    },
+    {
+        "lat": 39.72659,
+        "lon": 68.8297,
+        "name": "Bunjikath",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "water is abundant. six streams flow through it, similar to a large river which flows alongside."
+    },
+    {
+        "lat": 39.9365,
+        "lon": 68.42226,
+        "name": "Zamin",
+        "topType": "good",
+        "product": "streams",
+        "comment": "in two sections with a stream in-between and markets on both sides"
+    },
+    {
+        "lat": 39.99184,
+        "lon": 68.76781,
+        "name": "Sabat",
+        "topType": "good",
+        "product": "springs",
+        "comment": "has a spring with a constant flow of water"
+    },
+    {
+        "lat": 40.44866,
+        "lon": 62.18165,
+        "name": "Al-Darghan",
+        "topType": "sweetest",
+        "product": "unknown",
+        "comment": "\"is the most fertile of the rural areas, with the most pasture and water:"
+    },
+    {
+        "lat": 39.0129,
+        "lon": 66.826,
+        "name": "Kish",
+        "topType": "poor",
+        "product": "streams",
+        "comment": "There are two large streams - Nahr al-Qassarin (the stream of the fullers) and Nahr Asrud. \"I do not know of bad water in this region except at Kish and Nasa\" (270)"
+    },
+    {
+        "lat": 38.84841,
+        "lon": 65.7945,
+        "name": "Nasaf (Nakhshab)",
+        "topType": "poor",
+        "product": "rivers",
+        "comment": "river runs through it, but the water is scarce and sometimes the river stops flowing"
+    },
+    {
+        "lat": 37.6087,
+        "lon": 67.44233,
+        "name": "Darzanji",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "lies towards the Jayhun River. drinking water is derived from it, and another stream runs at the edge of the town"
+    },
+    {
+        "lat": 37.6087,
+        "lon": 67.44233,
+        "name": "Darzanji",
+        "topType": "good",
+        "product": "streams",
+        "comment": "lies towards the Jayhun River. drinking water is derived from it, and another stream runs at the edge of the town"
+    },
+    {
+        "lat": 36.82424,
+        "lon": 66.64549,
+        "name": "Dastajird",
+        "topType": "good",
+        "product": "streams",
+        "comment": "a large town situated between two streams with tributaries of the Jayhun River"
+    },
+    {
+        "lat": 42.44515,
+        "lon": 59.22638,
+        "name": "Al-Jurjaniyya",
+        "topType": "poor",
+        "product": "canals",
+        "comment": "Jayhun River surrounds it; they turned the river towards Faratakin (Baratakin) and it flowed in just one direction.  The people dug canals for the drinking water, but the water remains restrained"
+    },
+    {
+        "lat": 37.909167,
+        "lon": 69.781944,
+        "name": "Hulbuk",
+        "topType": "fair",
+        "product": "streams",
+        "comment": "drinking water is derived from a stream of middling water"
+    },
+    {
+        "lat": 37.2606,
+        "lon": 37.2606,
+        "name": "Tirmidh",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "most important city on the Jayhun River, water flows on both sides of the town"
+    },
+    {
+        "lat": 39.15302,
+        "lon": 63.6206,
+        "name": "Firabr",
+        "topType": "poor",
+        "product": "rivers",
+        "comment": "about a farsakh distant from the river; water is scarce"
+    },
+    {
+        "lat": 39.04896,
+        "lon": 63.51229,
+        "name": "Amul",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "about a farsakh distant from the river; wells are close to the surface"
+    },
+    {
+        "lat": 39.04896,
+        "lon": 63.51229,
+        "name": "Amul",
+        "topType": "good",
+        "product": "wells",
+        "comment": "about a farsakh distant from the river; wells are close to the surface"
+    },
+    {
+        "lat": 36.756111,
+        "lon": 66.896944,
+        "name": "Balkh",
+        "topType": "sweetest",
+        "product": "streams",
+        "comment": "on the Jayhun river, and there many others as well; known for the purity of its water. \"streams cut through its streets...its waters wholesomely light\" (246)"
+    },
+    {
+        "lat": 36.756111,
+        "lon": 66.896944,
+        "name": "Balkh",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "on the Jayhun river, and there many others as well; known for the purity of its water. \"streams cut through its streets...its waters wholesomely light\" (246)"
+    },
+    {
+        "lat": 36.10252,
+        "lon": 58.80347,
+        "name": "Iranshahr (Naysabur?)",
+        "topType": "sweetest",
+        "product": "canals",
+        "comment": "has canals. \"It is said that Abu Bakr al-'Abadawi said, 'I compared the waters of the Tigris with the waters of Naysabur, and they were both equal.'\" (244) \"I do not know any in the realm of Islam on par with it. For it combines within it such characteristics as...pureness of water.\" (256). water is under the ground"
+    },
+    {
+        "lat": 36.21079,
+        "lon": 68.08702,
+        "name": "Siminjan",
+        "topType": "good",
+        "product": "streams",
+        "comment": "\"situated amongst streams\" (246)"
+    },
+    {
+        "lat": 33.53708,
+        "lon": 68.40163,
+        "name": "Al-Bamiyan",
+        "topType": "good",
+        "product": "streams",
+        "comment": "\"situated amongst streams\" (246)"
+    },
+    {
+        "lat": 33.53708,
+        "lon": 68.40163,
+        "name": "Ghaznin",
+        "topType": "poor",
+        "product": "unknown",
+        "comment": "water is not pleasing"
+    },
+    {
+        "lat": 31.583056,
+        "lon": 64.369167,
+        "name": "Bust",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "situated between two rivers, drinking water derived from the Hirmid (Hilmand) River and the Khardaruy River"
+    },
+    {
+        "lat": 30.7594,
+        "lon": 61.61613,
+        "name": "Zaranj",
+        "topType": "good",
+        "product": "springs",
+        "comment": "has \"a trench in which springs flow and into which the overflow of the canals runs\" (248). water is abundant"
+    },
+    {
+        "lat": 30.7594,
+        "lon": 61.61613,
+        "name": "Zaranj",
+        "topType": "good",
+        "product": "canals",
+        "comment": "has \"a trench in which springs flow and into which the overflow of the canals runs\" (248). water is abundant"
+    },
+    {
+        "lat": 34.69844,
+        "lon": 62.94496,
+        "name": "Dihistan",
+        "topType": "poor",
+        "product": "rainwater",
+        "comment": "has a deficiency of water; farms are watered solely by rain"
+    },
+    {
+        "lat": 62.42921,
+        "lon": 62.42921,
+        "name": "Kif",
+        "topType": "good",
+        "product": "streams",
+        "comment": "has an abundance of running water"
+    },
+    {
+        "lat": 37.46147,
+        "lon": 61.67621,
+        "name": "Sinj",
+        "topType": "good",
+        "product": "streams",
+        "comment": "has a stream behind its mosque"
+    },
+    {
+        "lat": 38.84841,
+        "lon": 65.7945,
+        "name": "Nasaf (Nakhshab)",
+        "topType": "good",
+        "product": "streams",
+        "comment": "waters are abundant and flowing"
+    },
+    {
+        "lat": 36.13093,
+        "lon": 54.37503,
+        "name": "al-Damghan",
+        "topType": "poor",
+        "product": "cisterns",
+        "comment": "baths are dirty with water cisterns like those of Marw"
+    },
+    {
+        "lat": 35.50081,
+        "lon": 53.44113,
+        "name": "Simnan",
+        "topType": "good",
+        "product": "streams",
+        "comment": "water flows through the market and tanks are filled from it"
+    },
+    {
+        "lat": 35.50081,
+        "lon": 53.44113,
+        "name": "Simnan",
+        "topType": "good",
+        "product": "cisterns",
+        "comment": "water flows through the market and tanks are filled from it"
+    },
+    {
+        "lat": 36.45952,
+        "lon": 55.07205,
+        "name": "Bistam",
+        "topType": "good",
+        "product": "streams",
+        "comment": "has flowing water"
+    },
+    {
+        "lat": 36.05824,
+        "lon": 55.86992,
+        "name": "Biyar",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has farms and streams, but the water is scarce in the soil and gardens, so it is distributed via a waterclock (290). water flows down"
+    },
+    {
+        "lat": 37.19091,
+        "lon": 55.206,
+        "name": "Shahristan",
+        "topType": "worst",
+        "product": "rivers",
+        "comment": "Rivers flow copiously, and close by, have canals with bridges and arches, but the water \"is as bad as possible\" (291). \"the worst water and climate is in Jurjan.\" (295)"
+    },
+    {
+        "lat": 31.59434,
+        "lon": 65.86183,
+        "name": "Bakrabadh",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "a river with arched bridges between it and Jurjan. a stream called the Tayfuri runs through it, which is cleaner and sweeter than the river.  also has wells of sweet water."
+    },
+    {
+        "lat": 31.59434,
+        "lon": 65.86183,
+        "name": "Bakrabadh",
+        "topType": "good",
+        "product": "wells",
+        "comment": "a river with arched bridges between it and Jurjan. a stream called the Tayfuri runs through it, which is cleaner and sweeter than the river.  also has wells of sweet water."
+    },
+    {
+        "lat": 31.59434,
+        "lon": 65.86183,
+        "name": "Bakrabadh",
+        "topType": "good",
+        "product": "streams",
+        "comment": "a river with arched bridges between it and Jurjan. a stream called the Tayfuri runs through it, which is cleaner and sweeter than the river.  also has wells of sweet water."
+    },
+    {
+        "lat": 32,
+        "lon": 53,
+        "name": "Astarabadh",
+        "topType": "fair",
+        "product": "streams",
+        "comment": "has healthier water than Jurjan. a stream is close to the mosque"
+    },
+    {
+        "lat": 37.02772,
+        "lon": 54.04327,
+        "name": "A'baskun",
+        "topType": "worst",
+        "product": "lakes",
+        "comment": "on the lake; the stream on the edge of town. it is the port city. \"the worst water and climate is in Jurjan.\" (295)"
+    },
+    {
+        "lat": 37.02772,
+        "lon": 54.04327,
+        "name": "A'baskun",
+        "topType": "worst",
+        "product": "streams",
+        "comment": "on the lake; the stream on the edge of town. it is the port city. \"the worst water and climate is in Jurjan.\" (295)"
+    },
+    {
+        "lat": 36.56405,
+        "lon": 52.23414,
+        "name": "Alham",
+        "topType": "worst",
+        "product": "unknown",
+        "comment": "\"the worst water and climate is in Jurjan.\" (295)"
+    },
+    {
+        "lat": 39.19825,
+        "lon": 55.71277,
+        "name": "Akhur",
+        "topType": "worst",
+        "product": "unknown",
+        "comment": "\"the worst water and climate is in Jurjan.\" (295)"
+    },
+    {
+        "lat": 29.12318,
+        "lon": 53.44663,
+        "name": "al-Ribat",
+        "topType": "worst",
+        "product": "unknown",
+        "comment": "\"the worst water and climate is in Jurjan.\" (295)"
+    },
+    {
+        "lat": 36.45524,
+        "lon": 52.35814,
+        "name": "Amul",
+        "topType": "good",
+        "product": "lakes",
+        "comment": "beside the lake with abundant rain, river turns the mill. springs keep the rivers clear, with pouring rain lasts a long time"
+    },
+    {
+        "lat": 36.45524,
+        "lon": 52.35814,
+        "name": "Amul",
+        "topType": "good",
+        "product": "springs",
+        "comment": "beside the lake with abundant rain, river turns the mill. springs keep the rivers clear, with pouring rain lasts a long time"
+    },
+    {
+        "lat": 36.45524,
+        "lon": 52.35814,
+        "name": "Amul",
+        "topType": "good",
+        "product": "rivers",
+        "comment": "beside the lake with abundant rain, river turns the mill. springs keep the rivers clear, with pouring rain lasts a long time"
+    },
+    {
+        "lat": 36.4708,
+        "lon": 52.55267,
+        "name": "Mila",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 36.51713,
+        "lon": 52.74659,
+        "name": "Mamatir",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 36.53215,
+        "lon": 53.11807,
+        "name": "Sariya",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 36.7312,
+        "lon": 54.05573,
+        "name": "Tamis(a)",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 36.77488,
+        "lon": 54.32519,
+        "name": "Namiya",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 37.57057,
+        "lon": 48.55981,
+        "name": "Barwan",
+        "topType": "neutral",
+        "product": "well",
+        "comment": "well has been dug at the lowest end of town"
+    },
+    {
+        "lat": 37.48626,
+        "lon": 49.18674,
+        "name": "Khashm (Hawsam)",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "river flows beside the markets and has a bridge over it"
+    },
+    {
+        "lat": 37.79153,
+        "lon": 49.00372,
+        "name": "Kuhan Rudh",
+        "topType": "none",
+        "product": "unknown",
+        "comment": "no comment"
+    },
+    {
+        "lat": 30.03958,
+        "lon": 52.36712,
+        "name": "al-Baydha'",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "on a river"
+    },
+    {
+        "lat": 40.45266,
+        "lon": 47.23654,
+        "name": "Bardha'a",
+        "topType": "neutral",
+        "product": "lakes",
+        "comment": "river flows through the town, and the River al-Kurr is two farsakhs away. two streams flow fairly close to here, and a shimmering lake"
+    },
+    {
+        "lat": 40.45266,
+        "lon": 47.23654,
+        "name": "Bardha'a",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "river flows through the town, and the River al-Kurr is two farsakhs away. two streams flow fairly close to here, and a shimmering lake"
+    },
+    {
+        "lat": 42.08605,
+        "lon": 44.83829,
+        "name": "Tiflis",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "the River al-Kurr flows through it"
+    },
+    {
+        "lat": 40.67619,
+        "lon": 48.68006,
+        "name": "Al-Shamakhiya",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has running water"
+    },
+    {
+        "lat": 40.37725,
+        "lon": 49.86504,
+        "name": "Bakuh",
+        "topType": "neutral",
+        "product": "lakes",
+        "comment": "on the lake"
+    },
+    {
+        "lat": 40.80276,
+        "lon": 47.64859,
+        "name": "Qabala",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "the river outside the town"
+    },
+    {
+        "lat": 39.56661,
+        "lon": 47.6432,
+        "name": "Warthan",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "market is beyond the river"
+    },
+    {
+        "lat": 42.18704,
+        "lon": 48.31379,
+        "name": "Bab al-Abwab (Darband)",
+        "topType": "neutral",
+        "product": "lakes",
+        "comment": "on Bahr al-Khazar (the Caspian Sea), wall extends into the lake. The mosque has a spring of water. has running water"
+    },
+    {
+        "lat": 42.18704,
+        "lon": 48.31379,
+        "name": "Bab al-Abwab (Darband)",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "on Bahr al-Khazar (the Caspian Sea), wall extends into the lake. The mosque has a spring of water. has running water"
+    },
+    {
+        "lat": 42.18704,
+        "lon": 48.31379,
+        "name": "Bab al-Abwab (Darband)",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "on Bahr al-Khazar (the Caspian Sea), wall extends into the lake. The mosque has a spring of water. has running water"
+    },
+    {
+        "lat": 40.15102,
+        "lon": 44.67536,
+        "name": "Dabil",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "\"its river [is] fluent\" (306)"
+    },
+    {
+        "lat": 38.54726,
+        "lon": 42.08321,
+        "name": "Bidlis",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "in a deep wadi in which two streams flow"
+    },
+    {
+        "lat": 38.9243,
+        "lon": 42.47372,
+        "name": "Akhlat (Khilat)",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "stream flows through the town"
+    },
+    {
+        "lat": 38.22274,
+        "lon": 44.82887,
+        "name": "Salamas",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "\"a copiously flowing stream is here.\" (306)"
+    },
+    {
+        "lat": 37.51983,
+        "lon": 45.06856,
+        "name": "Urmiya",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has a stream"
+    },
+    {
+        "lat": 38.23486,
+        "lon": 48.30975,
+        "name": "Ardabil",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has running water"
+    },
+    {
+        "lat": 38.06249,
+        "lon": 46.33029,
+        "name": "Tabriz",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "streams flow through it"
+    },
+    {
+        "lat": 39.33548,
+        "lon": 48.50179,
+        "name": "Mughan",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "has two rivers surrounding it, and two streams flow through the land"
+    },
+    {
+        "lat": 39.33548,
+        "lon": 48.50179,
+        "name": "Mughan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has two rivers surrounding it, and two streams flow through the land"
+    },
+    {
+        "lat": 36.66235,
+        "lon": 48.5053,
+        "name": "Zanjan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has a stream"
+    },
+    {
+        "lat": 51.44071,
+        "lon": 35.63016,
+        "name": "Al-Rayy",
+        "topType": "worst",
+        "product": "streams",
+        "comment": "has abundant water, in fact more abundant than Naysabur. water causes diarrhea. streams flow through the town"
+    },
+    {
+        "lat": 48.5772,
+        "lon": 34.77688,
+        "name": "Hamadhan",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "has the sweetest water; rivers are full, water is cold with many springs here"
+    },
+    {
+        "lat": 48.5772,
+        "lon": 34.77688,
+        "name": "Hamadhan",
+        "topType": "sweetest",
+        "product": "springs",
+        "comment": "has the sweetest water; rivers are full, water is cold with many springs here"
+    },
+    {
+        "lat": 49.74253,
+        "lon": 35.13927,
+        "name": "al-Bustah",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has a large stream"
+    },
+    {
+        "lat": 47.09404,
+        "lon": 34.32585,
+        "name": "Qarmasin (Kirman Shahan)",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "springs are famous"
+    },
+    {
+        "lat": 47.40557,
+        "lon": 33.15264,
+        "name": "Sumayram",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "flowing water in the market and streets, and a spring in the mountain with a spring of water"
+    },
+    {
+        "lat": 47.40557,
+        "lon": 33.15264,
+        "name": "Sumayram",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "flowing water in the market and streets, and a spring in the mountain with a spring of water"
+    },
+    {
+        "lat": 50.00161,
+        "lon": 36.28258,
+        "name": "Qazwin",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "drinking water from wells, rain, and a stream"
+    },
+    {
+        "lat": 50.00161,
+        "lon": 36.28258,
+        "name": "Qazwin",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from wells, rain, and a stream"
+    },
+    {
+        "lat": 50.00161,
+        "lon": 36.28258,
+        "name": "Qazwin",
+        "topType": "neutral",
+        "product": "rainwater",
+        "comment": "drinking water from wells, rain, and a stream"
+    },
+    {
+        "lat": 33.96725,
+        "lon": 51.57108,
+        "name": "Qashan",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "has a number of canals"
+    },
+    {
+        "lat": 48.39049,
+        "lon": 34.22305,
+        "name": "Mah al-Basra (Nihawand)",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "a large town with streams"
+    },
+    {
+        "lat": 47.48843,
+        "lon": 34.60066,
+        "name": "Al-Dinawar",
+        "topType": "sweetest",
+        "product": "springs",
+        "comment": "water is cold, and \"you will see no cleaner\" (321). edges of the springs have drinking tubes of different kinds where the water comes up. town bubbles with springs"
+    },
+    {
+        "lat": 49.54324,
+        "lon": 33.88688,
+        "name": "Karaj Abi Dulaf",
+        "topType": "sweetest",
+        "product": "springs",
+        "comment": "same as al-Dinawar (water is cold, and \"you will see no cleaner\" (321). edges of the springs have drinking tubes of different kinds where the water comes up. town bubbles with springs)"
+    },
+    {
+        "lat": 49.60146,
+        "lon": 31.28664,
+        "name": "Ramhurmuz",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "inhabitants derive drinking water from a stream and wells, and also use the stream for farms in turns (337)"
+    },
+    {
+        "lat": 49.60146,
+        "lon": 31.28664,
+        "name": "Ramhurmuz",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "inhabitants derive drinking water from a stream and wells, and also use the stream for farms in turns (337)"
+    },
+    {
+        "lat": 50.02049,
+        "lon": 30.73229,
+        "name": "Sanbil",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "rivers of the region do not reach it, but they have a river away from it (333)"
+    },
+    {
+        "lat": 49.82697,
+        "lon": 31.39363,
+        "name": "Tiram",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "rivers of the region do not reach it, but they have a river away from it (333)"
+    },
+    {
+        "lat": 48.26043,
+        "lon": 32.20443,
+        "name": "Al-Sus",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "flowing waters turn mills. the grave of Daniel is in a stream beyond the city. the grave is the water"
+    },
+    {
+        "lat": 48.30343,
+        "lon": 31.99675,
+        "name": "Basinna",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has a stream called Dijla. river is distant from the city"
+    },
+    {
+        "lat": 48.54101,
+        "lon": 32.29988,
+        "name": "Jundaysabur",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has two streams"
+    },
+    {
+        "lat": 48.85306,
+        "lon": 32.05234,
+        "name": "Tustar",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "river flows around it; people have cold water courses that flow underground. cold water runs in channels underground"
+    },
+    {
+        "lat": 48.85306,
+        "lon": 32.05234,
+        "name": "Tustar",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "river flows around it; people have cold water courses that flow underground. cold water runs in channels underground"
+    },
+    {
+        "lat": 48.69258,
+        "lon": 31.32964,
+        "name": "Al-Ahwaz",
+        "topType": "sweetest",
+        "product": "canals",
+        "comment": "\"thriving watering place for every passerby... side facing al-'Iraq is an island and the main branch of the river. has a stream with a number of wheels. also the water flows in raised canals, with some flowing in channels to the gardens.  the main stream flows from beyond the island about shouting distance to a reservoir and forms a pool. has a roiling of water and the reservoir holds back the flow, dividing into three streams that flow to villages and farms.  It is said that without the reservoir it would not be inhabited\" (336)"
+    },
+    {
+        "lat": 48.69258,
+        "lon": 31.32964,
+        "name": "Al-Ahwaz",
+        "topType": "sweetest",
+        "product": "streams",
+        "comment": "\"thriving watering place for every passerby... side facing al-'Iraq is an island and the main branch of the river. has a stream with a number of wheels. also the water flows in raised canals, with some flowing in channels to the gardens.  the main stream flows from beyond the island about shouting distance to a reservoir and forms a pool. has a roiling of water and the reservoir holds back the flow, dividing into three streams that flow to villages and farms.  It is said that without the reservoir it would not be inhabited\" (336)"
+    },
+    {
+        "lat": 48.69258,
+        "lon": 31.32964,
+        "name": "Al-Ahwaz",
+        "topType": "sweetest",
+        "product": "rivers",
+        "comment": "\"thriving watering place for every passerby... side facing al-'Iraq is an island and the main branch of the river. has a stream with a number of wheels. also the water flows in raised canals, with some flowing in channels to the gardens.  the main stream flows from beyond the island about shouting distance to a reservoir and forms a pool. has a roiling of water and the reservoir holds back the flow, dividing into three streams that flow to villages and farms.  It is said that without the reservoir it would not be inhabited\" (336)"
+    },
+    {
+        "lat": 48.92544,
+        "lon": 30.81201,
+        "name": "Al-Dawraq",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "...water forms a lake here. situated on a river. streams branch off at the upper end of town and then come back together at Karshanan (336) drinking water derived from the river"
+    },
+    {
+        "lat": 48.92544,
+        "lon": 30.81201,
+        "name": "Al-Dawraq",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "...water forms a lake here. situated on a river. streams branch off at the upper end of town and then come back together at Karshanan (336) drinking water derived from the river"
+    },
+    {
+        "lat": 48.92544,
+        "lon": 30.81201,
+        "name": "Al-Dawraq",
+        "topType": "neutral",
+        "product": "lakes",
+        "comment": "...water forms a lake here. situated on a river. streams branch off at the upper end of town and then come back together at Karshanan (336) drinking water derived from the river"
+    },
+    {
+        "lat": 29.97008,
+        "lon": 52.92548,
+        "name": "Istakhr",
+        "topType": "poor",
+        "product": "rivers",
+        "comment": "people have drinking spots near the river; cisterns in the town. not much water in the upper portion of the town. waters are not healthy because they irrigate rice farms (354)"
+    },
+    {
+        "lat": 29.97008,
+        "lon": 52.92548,
+        "name": "Istakhr",
+        "topType": "poor",
+        "product": "cisterns",
+        "comment": "people have drinking spots near the river; cisterns in the town. not much water in the upper portion of the town. waters are not healthy because they irrigate rice farms (354)"
+    },
+    {
+        "lat": 30.11392,
+        "lon": 54.41315,
+        "name": "Harat",
+        "topType": "poor",
+        "product": "unknown",
+        "comment": "\"water here is distasteful\" (354)"
+    },
+    {
+        "lat": 30.6103,
+        "lon": 50.29766,
+        "name": "Arrajan",
+        "topType": "poor",
+        "product": "streams",
+        "comment": "copious stream cuts through the town,wells sweet, river water is salty. (346-347)"
+    },
+    {
+        "lat": 30.6103,
+        "lon": 50.29766,
+        "name": "Arrajan",
+        "topType": "poor",
+        "product": "rivers",
+        "comment": "copious stream cuts through the town,wells sweet, river water is salty. (346-347)"
+    },
+    {
+        "lat": 33.55385,
+        "lon": 54.93672,
+        "name": "Jarmaq",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water from canals, \"easily seen at the surface of the ground\" (354)"
+    },
+    {
+        "lat": 30.31412,
+        "lon": 55.70689,
+        "name": "Dih Ushturan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "stream flows under the town"
+    },
+    {
+        "lat": 30.46456,
+        "lon": 53.6192,
+        "name": "Bawwan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "stream cuts it into two sections"
+    },
+    {
+        "lat": 30.69092,
+        "lon": 51.9324,
+        "name": "Kurd",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water is from a stream"
+    },
+    {
+        "lat": 36.61767,
+        "lon": 57.93021,
+        "name": "Mihrajanawadh",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from streams"
+    },
+    {
+        "lat": 29.27422,
+        "lon": 57.89378,
+        "name": "Sarwistan",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "waters canals on the surface"
+    },
+    {
+        "lat": 29.54292,
+        "lon": 53.33817,
+        "name": "Khurrama",
+        "topType": "neural",
+        "product": "canals",
+        "comment": "drinking water from canals; stream flows underground"
+    },
+    {
+        "lat": 29.54292,
+        "lon": 53.33817,
+        "name": "Khurrama",
+        "topType": "neural",
+        "product": "streams",
+        "comment": "drinking water from canals; stream flows underground"
+    },
+    {
+        "lat": 31.1799,
+        "lon": 52.62743,
+        "name": "Barm",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "rural district irrigated by wells"
+    },
+    {
+        "lat": 30.39947,
+        "lon": 56.02186,
+        "name": "al-Rudhan",
+        "topType": "poor",
+        "product": "canals",
+        "comment": "baths are dirty. have numerous canals and a spring in healing waters"
+    },
+    {
+        "lat": 30.39947,
+        "lon": 56.02186,
+        "name": "al-Rudhan",
+        "topType": "poor",
+        "product": "springs",
+        "comment": "baths are dirty. have numerous canals and a spring in healing waters"
+    },
+    {
+        "lat": 30.06436,
+        "lon": 50.21436,
+        "name": "Mahruban",
+        "topType": "none",
+        "product": "none",
+        "comment": "on the sea, but water is scarce"
+    },
+    {
+        "lat": 27.69666,
+        "lon": 52.34306,
+        "name": "Siraf",
+        "topType": "fair",
+        "product": "imported",
+        "comment": "water is brought from a distance, and have a canal of middling water"
+    },
+    {
+        "lat": 36.65798,
+        "lon": 55.30802,
+        "name": "Zirabadh",
+        "topType": "sweetest",
+        "product": "wells",
+        "comment": "drinking water is from scant wells, \"and nothing better to drink is to be had here.\" (348). whenever a well dries up, they move to another"
+    },
+    {
+        "lat": 28.49687,
+        "lon": 51.12283,
+        "name": "Najiram",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "on the coast; drinking water from wells and ponds filled by te rain"
+    },
+    {
+        "lat": 28.49687,
+        "lon": 51.12283,
+        "name": "Najiram",
+        "topType": "neutral",
+        "product": "rainwater",
+        "comment": "on the coast; drinking water from wells and ponds filled by te rain"
+    },
+    {
+        "lat": 27.19067,
+        "lon": 56.21348,
+        "name": "Suru",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "coastal town; \"people drink the water which comes from the mountains, and it collects in one place. When it stops they dig that place about five cubits, and sweet water emerges for them.\" (348)"
+    },
+    {
+        "lat": 28.75143,
+        "lon": 54.54591,
+        "name": "Darabjird",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "have wells and canals"
+    },
+    {
+        "lat": 28.75143,
+        "lon": 54.54591,
+        "name": "Darabjird",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "have wells and canals"
+    },
+    {
+        "lat": 28.31921,
+        "lon": 55.16805,
+        "name": "Furj",
+        "topType": "neutral",
+        "product": "imported",
+        "comment": "water brought from a distance away"
+    },
+    {
+        "lat": 28.84797,
+        "lon": 53.94661,
+        "name": "Juwaym Abi Ahmad",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water obtained from canals, with a small stream near the market. has a cistern filled by rainwater"
+    },
+    {
+        "lat": 28.84797,
+        "lon": 53.94661,
+        "name": "Juwaym Abi Ahmad",
+        "topType": "neutral",
+        "product": "cisterns",
+        "comment": "drinking water obtained from canals, with a small stream near the market. has a cistern filled by rainwater"
+    },
+    {
+        "lat": 28.84797,
+        "lon": 53.94661,
+        "name": "Juwaym Abi Ahmad",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water obtained from canals, with a small stream near the market. has a cistern filled by rainwater"
+    },
+    {
+        "lat": 28.4795,
+        "lon": 55.10037,
+        "name": "Rustaq",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water is obtained from the branch of a nearby stream"
+    },
+    {
+        "lat": 29.61884,
+        "lon": 52.52867,
+        "name": "Shiraz",
+        "topType": "good",
+        "product": "canals",
+        "comment": "the water is light if you drink from what flows. the water of wells is sweet and is close to the surface. digging a large canal from a distance of one stage away"
+    },
+    {
+        "lat": 29.61884,
+        "lon": 52.52867,
+        "name": "Shiraz",
+        "topType": "good",
+        "product": "wells",
+        "comment": "the water is light if you drink from what flows. the water of wells is sweet and is close to the surface. digging a large canal from a distance of one stage away"
+    },
+    {
+        "lat": 28.40625,
+        "lon": 56.1416,
+        "name": "Dasht Barin",
+        "topType": "none",
+        "product": "none",
+        "comment": "has no stream, people drink from scant water supplies"
+    },
+    {
+        "lat": 29.94029,
+        "lon": 52.49428,
+        "name": "Hazar",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water is derived from channels at the surface of the ground"
+    },
+    {
+        "lat": 28.84797,
+        "lon": 52.58324,
+        "name": "Jur",
+        "topType": "fair",
+        "product": "stream",
+        "comment": "drinking water is derived from a stream and clean canals"
+    },
+    {
+        "lat": 28.84797,
+        "lon": 52.58324,
+        "name": "Jur",
+        "topType": "fair",
+        "product": "canals",
+        "comment": "drinking water is derived from a stream and clean canals"
+    },
+    {
+        "lat": 37.19091,
+        "lon": 55.206,
+        "name": "Shahrastan",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "river flows all around the capital"
+    },
+    {
+        "lat": 29.60743,
+        "lon": 51.68412,
+        "name": "Kazarun",
+        "topType": "worst",
+        "product": "canals",
+        "comment": "water is disagreeable; everyone is pale and sick. there is no sufficient stream here only canals and wells"
+    },
+    {
+        "lat": 29.60743,
+        "lon": 51.68412,
+        "name": "Kazarun",
+        "topType": "worst",
+        "product": "wells",
+        "comment": "water is disagreeable; everyone is pale and sick. there is no sufficient stream here only canals and wells"
+    },
+    {
+        "lat": 29.22327,
+        "lon": 51.9773,
+        "name": "Khurrah",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "river flows below the town"
+    },
+    {
+        "lat": 30.12743,
+        "lon": 51.55235,
+        "name": "Al-Nawbandijan",
+        "topType": "neutral",
+        "product": "springs",
+        "comment": "has twenty springs gush out at every place"
+    },
+    {
+        "lat": 30.24443,
+        "lon": 51.50809,
+        "name": "Khawādhān",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "streams penetrate it"
+    },
+    {
+        "lat": 30.29389,
+        "lon": 50.84951,
+        "name": "Junbad Mallaghan",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water is derived from canals, and in the town are cisterns"
+    },
+    {
+        "lat": 30.29389,
+        "lon": 50.84951,
+        "name": "Junbad Mallaghan",
+        "topType": "neutral",
+        "product": "cisterns",
+        "comment": "drinking water is derived from canals, and in the town are cisterns"
+    },
+    {
+        "lat": 35.14086,
+        "lon": 58.14671,
+        "name": "Kunduran",
+        "topType": "neutral",
+        "product": "rainwater",
+        "comment": "drinking water from rain water from wells"
+    },
+    {
+        "lat": 35.14086,
+        "lon": 58.14671,
+        "name": "Kunduran",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "drinking water from rain water from wells"
+    },
+    {
+        "lat": 29.44172,
+        "lon": 51.03513,
+        "name": "Tawwaz",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "large river flows beside the town"
+    },
+    {
+        "lat": 29.54859,
+        "lon": 51.30575,
+        "name": "Khasht",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water derived from a large stream"
+    },
+    {
+        "lat": 30.31818,
+        "lon": 57.09814,
+        "name": "Bardasir",
+        "topType": "sweet",
+        "product": "wells",
+        "comment": "has a \"great and remarkable well dug by Abu 'Ali bin Ilyas\" (374), most drinking water from wells, but there is also a canal"
+    },
+    {
+        "lat": 30.31818,
+        "lon": 57.09814,
+        "name": "Bardasir",
+        "topType": "sweet",
+        "product": "canals",
+        "comment": "has a \"great and remarkable well dug by Abu 'Ali bin Ilyas\" (374), most drinking water from wells, but there is also a canal"
+    },
+    {
+        "lat": 30.10962,
+        "lon": 57.31144,
+        "name": "Mahan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from a stream, has flowing waters"
+    },
+    {
+        "lat": 29.61665,
+        "lon": 57.06496,
+        "name": "Kughun",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from a stream and canals"
+    },
+    {
+        "lat": 29.61665,
+        "lon": 57.06496,
+        "name": "Kughun",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water from a stream and canals"
+    },
+    {
+        "lat": 30.8301,
+        "lon": 56.59569,
+        "name": "Zarand Ibn Ilyas",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water from canals"
+    },
+    {
+        "lat": 30.67368,
+        "lon": 56.92276,
+        "name": "Janzarudh",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "has a stream"
+    },
+    {
+        "lat": 30.24708,
+        "lon": 55.97949,
+        "name": "Unas",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water from canals"
+    },
+    {
+        "lat": 29.70671,
+        "lon": 56.61465,
+        "name": "Karistan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from a stream"
+    },
+    {
+        "lat": 30.46038,
+        "lon": 57.75226,
+        "name": "Khabis",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from canals and a stream"
+    },
+    {
+        "lat": 28.99097,
+        "lon": 58.64813,
+        "name": "Narmasir",
+        "topType": "fair",
+        "product": "canals",
+        "comment": "drinking water from canals, baths are not bad"
+    },
+    {
+        "lat": 29.87262,
+        "lon": 56.33973,
+        "name": "Bahar",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "have streams and canals"
+    },
+    {
+        "lat": 29.87262,
+        "lon": 56.33973,
+        "name": "Bahar",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "have streams and canals"
+    },
+    {
+        "lat": 28.88195,
+        "lon": 58.49645,
+        "name": "Kark",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "have streams and canals"
+    },
+    {
+        "lat": 29.69723,
+        "lon": 58.02718,
+        "name": "Nasa",
+        "topType": "poor",
+        "product": "streams",
+        "comment": "drinking water from a stream. \"I do not know of bad water in this region except at Kish and Nasa\" (270)"
+    },
+    {
+        "lat": 29.46497,
+        "lon": 55.74249,
+        "name": "Al-Sirjan",
+        "topType": "good",
+        "product": "canals",
+        "comment": "have pure, flowing water. the canals are called the 'Amr and Tahir, whichflow through the town"
+    },
+    {
+        "lat": 29.66405,
+        "lon": 55.60029,
+        "name": "Bimand",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water from canals"
+    },
+    {
+        "lat": 58.45153,
+        "lon": 32.93881,
+        "name": "Khur",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "stream flows through the town"
+    },
+    {
+        "lat": 29.09999,
+        "lon": 58.34003,
+        "name": "Bamm",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water from canals"
+    },
+    {
+        "lat": 29.42231,
+        "lon": 57.80914,
+        "name": "Tushtan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from a stream and canals"
+    },
+    {
+        "lat": 29.42231,
+        "lon": 57.80914,
+        "name": "Tushtan",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water from a stream and canals"
+    },
+    {
+        "lat": 29.19953,
+        "lon": 58.16939,
+        "name": "Darzhin",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from a stream"
+    },
+    {
+        "lat": 29.32751,
+        "lon": 57.95134,
+        "name": "Awarak",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "conjoined with Mihrikird; drinking water from a stream"
+    },
+    {
+        "lat": 28.69235,
+        "lon": 57.80914,
+        "name": "Jiruft",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water \"derived from a stream that flows through the streets and the markets; it has a strong flow, turning twenty mill wheels\" (377)"
+    },
+    {
+        "lat": 27.10443,
+        "lon": 56.94172,
+        "name": "Hurmuz",
+        "topType": "good",
+        "product": "canals",
+        "comment": "drinking water from canals of sweet water"
+    },
+    {
+        "lat": 27.4552,
+        "lon": 57.54844,
+        "name": "Manuqan",
+        "topType": "none",
+        "product": "none",
+        "comment": "has two sections divided by an extensive dry wadi"
+    },
+    {
+        "lat": 28.12354,
+        "lon": 58.18361,
+        "name": "Juy Sulayman",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from a stream that cuts through the town"
+    },
+    {
+        "lat": 27.67798,
+        "lon": 57.75226,
+        "name": "Kuh Barjan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water derived from a stream and wells"
+    },
+    {
+        "lat": 27.67798,
+        "lon": 57.75226,
+        "name": "Kuh Barjan",
+        "topType": "neutral",
+        "product": "wells",
+        "comment": "drinking water derived from a stream and wells"
+    },
+    {
+        "lat": 27.98134,
+        "lon": 57.78544,
+        "name": "Mughun",
+        "topType": "neutral",
+        "product": "canals",
+        "comment": "drinking water from canals"
+    },
+    {
+        "lat": 27.7765,
+        "lon": 66.59495,
+        "name": "Quzdar (Qusdar)",
+        "topType": "worst",
+        "product": "streams",
+        "comment": "in the desert, a dry wadi separates its two regions. \"the water is vile, and if someone should drink of it his stomach sweels\" (386)"
+    },
+    {
+        "lat": 25.90129,
+        "lon": 68.94268,
+        "name": "Al-Mansura",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "drinking water derived from the Indus River"
+    },
+    {
+        "lat": 24.1391,
+        "lon": 67.33938,
+        "name": "Daybul",
+        "topType": "neutral",
+        "product": "rivers",
+        "comment": "\"water beats against the walls of the town;\" (387) and is where th Mihran (Indus) flows into the sea"
+    },
+    {
+        "lat": 27.11654,
+        "lon": 80.03921,
+        "name": "Qannawj (Kannawj)",
+        "topType": "fair",
+        "product": "rivers",
+        "comment": "water is safe to drink and river flows freely through the town"
+    },
+    {
+        "lat": 30.22096,
+        "lon": 71.46893,
+        "name": "Al-Multan",
+        "topType": "neutral",
+        "product": "streams",
+        "comment": "drinking water from a copious stream"
+    }
 ]}
